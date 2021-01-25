@@ -1,0 +1,31 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="fbla.Views.TrueFalseQuestionView">
+	<StackPanel Spacing="10">
+
+		<TextBlock FontWeight="Bold" HorizontalAlignment="Left" Text="{Binding questionModel.Question}" TextWrapping="Wrap" MaxWidth="500"></TextBlock>
+		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
+			<Rectangle IsVisible="{Binding CorrectNotSelected1}" Fill="LightGreen" ></Rectangle>
+			<RadioButton Content="{Binding questionModel.Answer1}"
+						 Command="{Binding Selected1}" Grid.Row="0" Grid.Column="0"
+						 IsEnabled="{Binding enabled}"
+						 GroupName="{Binding groupName}"></RadioButton>
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer1}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer1}"></Image>
+		</Grid>
+
+		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
+			<Rectangle IsVisible="{Binding CorrectNotSelected2}" Fill="LightGreen" ></Rectangle>
+			<RadioButton Content="{Binding questionModel.Answer2}"
+						 Command="{Binding Selected2}" Grid.Row="0" Grid.Column="0"
+						 IsEnabled="{Binding enabled}"
+						 GroupName="{Binding groupName}"></RadioButton>
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer2}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer2}"></Image>
+		</Grid>
+		
+	</StackPanel>
+</UserControl>

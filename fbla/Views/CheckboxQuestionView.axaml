@@ -1,0 +1,47 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="fbla.Views.CheckboxQuestionView">
+	<StackPanel Spacing="10">
+		<TextBlock FontWeight="Bold" HorizontalAlignment="Left" Text="{Binding questionModel.Question}" TextWrapping="Wrap" MaxWidth="500"></TextBlock>
+		<TextBlock Text="Select only 2 answers."></TextBlock>
+		<Grid ColumnDefinitions="Auto, Auto">
+			<Rectangle IsVisible="{Binding CorrectRect1}" Fill="LightGreen" ></Rectangle>
+			<CheckBox Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer1}"
+						 IsChecked="{Binding Answer1Checked}"
+						 IsEnabled="{Binding enabled}"></CheckBox>
+			
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer1}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer1}"></Image>
+		</Grid>
+		<Grid ColumnDefinitions="Auto, Auto">
+			<Rectangle IsVisible="{Binding CorrectRect2}" Fill="LightGreen" ></Rectangle>
+			<CheckBox Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer2}"
+						 IsChecked="{Binding Answer2Checked}"
+						 IsEnabled="{Binding enabled}"></CheckBox>
+			
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer2}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer2}"></Image>
+		</Grid>
+		<Grid ColumnDefinitions="Auto, Auto">
+			<Rectangle IsVisible="{Binding CorrectRect3}" Fill="LightGreen" ></Rectangle>
+			<CheckBox Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer3}"
+						 IsChecked="{Binding Answer3Checked}"
+						 IsEnabled="{Binding enabled}"></CheckBox>
+			
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer3}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer3}"></Image>
+		</Grid>
+		<Grid ColumnDefinitions="Auto, Auto">
+			<Rectangle IsVisible="{Binding CorrectRect4}" Fill="LightGreen" ></Rectangle>
+			<CheckBox Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer4}"
+						 IsChecked="{Binding Answer4Checked}"
+						 IsEnabled="{Binding enabled}"></CheckBox>
+			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer4}"></Image>
+			<Image Height="25" Width="25" Source="/Assets/Incorrect.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isIncorrectAnswer4}"></Image>
+		</Grid>
+
+	</StackPanel>
+</UserControl>

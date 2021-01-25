@@ -1,0 +1,40 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="fbla.Views.QuizScreenView"
+			 xmlns:views="clr-namespace:fbla.Views">
+	<ScrollViewer>
+		<Grid RowDefinitions="Auto, 30" ColumnDefinitions="Auto,*" Background="AliceBlue">
+			<StackPanel Grid.Row="0" Grid.Column="0">
+				<UserControl Content="{Binding question1}" Padding="10"/>
+				<UserControl Content="{Binding question2}" Padding="10"/>
+				<UserControl Content="{Binding question3}" Padding="10"/>
+				<UserControl Content="{Binding question4}" Padding="10"/>
+				<UserControl Content="{Binding question5}" Padding="10"/>
+				
+			</StackPanel>
+			<StackPanel Background="LightBlue" Margin="50" Grid.Row="0" Grid.Column="1" IsVisible="{Binding submitted}"
+						 VerticalAlignment="Center" Spacing="10" HorizontalAlignment="Center">
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result1}"></TextBlock>
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result2}"></TextBlock>
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result3}"></TextBlock>
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result4}"></TextBlock>
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result5}"></TextBlock>
+				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding totalResult}"></TextBlock>
+				<Button Command="{Binding saveResults}">Save Results</Button>
+				
+			</StackPanel>
+			
+			<Button Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="200" Command="{Binding ScoreQuiz}">Submit</Button>
+			<Rectangle IsVisible="{Binding warningVisible}" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Stretch" 
+					   HorizontalAlignment="Stretch" Fill="DarkGray"  Opacity="0.9"></Rectangle>
+			<Grid IsVisible="{Binding warningVisible}" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Center" ColumnDefinitions="*" RowDefinitions="3*, *"
+					   HorizontalAlignment="Center" Background="DarkGray" Width="300" Height="150">
+				<TextBlock FontSize="14" Margin="10" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Column="0" Grid.Row="0" Text="{Binding popupText}"> </TextBlock>
+				<Button Margin="10" IsEnabled="{Binding warningVisible}" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="100" Height="30" Grid.Column="0" Grid.Row="1" Command="{Binding okPressed}">Ok</Button>
+			</Grid>
+		</Grid>
+	</ScrollViewer>
+</UserControl>
