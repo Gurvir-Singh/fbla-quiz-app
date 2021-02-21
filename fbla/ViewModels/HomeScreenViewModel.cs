@@ -22,6 +22,7 @@ namespace fbla.ViewModels
             }
         }
 
+
         private int _Width = 1000;
         public int Width
         {
