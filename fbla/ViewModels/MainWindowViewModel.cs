@@ -37,7 +37,18 @@ namespace fbla.ViewModels
         
         public void ReturnToHome()
         {
-            CurrentScreen = new HomeScreenViewModel();
+            if (((QuizScreenViewModel)CurrentScreen).submitted)
+            {
+                CurrentScreen = new HomeScreenViewModel();
+            }
+            else if (((QuizScreenViewModel)CurrentScreen).forceSubmitting)
+            {
+                CurrentScreen = new HomeScreenViewModel();
+            }
+            else
+            {
+                ((QuizScreenViewModel)CurrentScreen).EarlyLeaveWarning();
+            }
         }
     }
 }

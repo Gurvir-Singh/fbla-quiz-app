@@ -52,6 +52,17 @@ namespace fbla.ViewModels
                 this.RaiseAndSetIfChanged(ref _warningVisible, value);
             }
         }
+        private bool _forceSubmitting = false;
+        public bool forceSubmitting
+        {
+            get
+            {
+                return _forceSubmitting;
+            }
+            set {
+                _forceSubmitting = value;
+            }
+        }
         //bool for if the quiz has been submitted
         private bool _submitted = false;
         public bool submitted
@@ -74,7 +85,7 @@ namespace fbla.ViewModels
             }
         }
         //string containg the popup/warning text that changes after questions have been submitted
-        private string _popupText = "One or more of the questions was not answered please ensure you have answered all questions.";
+        private string _popupText = "One or more of the questions was not answered. Are you sure you want to submit?";
         public string popupText
         {
             get
@@ -145,10 +156,45 @@ namespace fbla.ViewModels
                 _score = 0;
             }
         }
+        private bool _returningHome = false;
+        public bool returningHome
+        {
+            get
+            {
+                return _returningHome;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _returningHome, value);
+            }
+        }
+        private bool _submitEarly = false;
+        public bool submitEarly
+        {
+            get
+            {
+                return _submitEarly;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _submitEarly, value);
+            }
+        }
+        public void yesPressed()
+        {
+            noPressed();
+            ScoreQuiz(true);
+        }
+
         //psuedo-Event handler for when ok button on pop up is pressed
-        public void okPressed()
+        public void noPressed()
         {
             warningVisible = false;
+            submitEarly = false;
+            returningHome = false;
+            forceSubmitting = false;
+            noVisible = false;
+            okVisible = false;
             if (popupText != "Saved succsessfully to the documents folder")
             {
                 question1.enabled = true;
@@ -170,6 +216,20 @@ namespace fbla.ViewModels
             {
                 this.RaiseAndSetIfChanged(ref _Width, value);
             }
+        }
+
+        public void EarlyLeaveWarning()
+        {
+            forceSubmitting = true;
+            returningHome = true;
+            noVisible = true;
+            popupText = "Are you sure you want to exit?";
+            warningVisible = true;
+            question1.enabled = false;
+            question2.enabled = false;
+            question3.enabled = false;
+            question4.enabled = false;
+            question5.enabled = false;
         }
 
         private bool _SubmitButtonShowing = true;
@@ -196,13 +256,40 @@ namespace fbla.ViewModels
                 this.RaiseAndSetIfChanged(ref _ReturnHomeButtonShowing, value);
             }
         }
+        private bool _okVisible = false;
+        public bool okVisible
+        {
+            get
+            {
+                return _okVisible;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _okVisible, value);
+            }
+        }
+        private bool _noVisible = false;
+        public bool noVisible
+        {
+            get
+            {
+                return _noVisible;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _noVisible, value);
+            }
+        }
 
         //method that scores and submitts quiz
-        public void ScoreQuiz()
+        public void ScoreQuiz(bool submittingEarly = false)
         {
 
-            if (!question1.answered() || !question2.answered() || !question3.answered() || !question4.answered() || !question5.answered())
+            if ((!question1.answered() || !question2.answered() || !question3.answered() || !question4.answered() || !question5.answered()) && !submittingEarly)
             {
+                popupText = "One or more of the questions was not answered. Are you sure you want to submit?";
+                submitEarly = true;
+                noVisible = true;
                 warningVisible = true; 
                 question1.enabled = false;
                 question2.enabled = false;
