@@ -6,16 +6,17 @@
              x:Class="fbla.Views.QuizScreenView"
 			 xmlns:views="clr-namespace:fbla.Views">
 	<ScrollViewer>
-		<Grid RowDefinitions="Auto, 30" ColumnDefinitions="Auto,*" Background="AliceBlue">
+		<Grid RowDefinitions="Auto, 30" ColumnDefinitions="Auto,*" Background="#D7E8F6">
+			<!--Questions-->
 			<StackPanel Grid.Row="0" Grid.Column="0">
 				<UserControl Content="{Binding question1}" Padding="10"/>
 				<UserControl Content="{Binding question2}" Padding="10"/>
 				<UserControl Content="{Binding question3}" Padding="10"/>
 				<UserControl Content="{Binding question4}" Padding="10"/>
 				<UserControl Content="{Binding question5}" Padding="10"/>
-				
 			</StackPanel>
-			<StackPanel Background="LightBlue" Margin="50" Grid.Row="0" Grid.Column="1" IsVisible="{Binding submitted}"
+			<!--Results-->
+			<StackPanel Background="#D7E8F6" Margin="50" Grid.Row="0" Grid.Column="1" IsVisible="{Binding submitted}"
 						 VerticalAlignment="Center" Spacing="10" HorizontalAlignment="Center">
 				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result1}"></TextBlock>
 				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result2}"></TextBlock>
@@ -24,10 +25,16 @@
 				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result5}"></TextBlock>
 				<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding totalResult}"></TextBlock>
 				<Button Command="{Binding saveResults}">Save Results</Button>
-				
 			</StackPanel>
-			
-			<Button Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="200" Command="{Binding ScoreQuiz}">Submit</Button>
+			<!--Submit Button -->
+			<Button Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+					Width="200" Command="{Binding ScoreQuiz}"
+					IsVisible="{Binding SubmitButtonShowing}">Submit</Button>
+			<!--Return Home Button-->
+			<Button Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+					Width="200" Command="{Binding $parent[Window].DataContext.ReturnToHome}"
+					IsVisible="{Binding ReturnHomeButtonShowing}">Return to Home</Button>
+			<!--Warning-->
 			<Rectangle IsVisible="{Binding warningVisible}" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Stretch" 
 					   HorizontalAlignment="Stretch" Fill="DarkGray"  Opacity="0.9"></Rectangle>
 			<Grid IsVisible="{Binding warningVisible}" Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Center" ColumnDefinitions="*" RowDefinitions="3*, *"

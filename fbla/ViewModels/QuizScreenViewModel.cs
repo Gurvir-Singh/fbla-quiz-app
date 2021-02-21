@@ -158,11 +158,49 @@ namespace fbla.ViewModels
                 question5.enabled = true;
             }
         }
-        
-        
+
+        private int _Width = 1000;
+        public int Width
+        {
+            get
+            {
+                return _Width;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Width, value);
+            }
+        }
+
+        private bool _SubmitButtonShowing = true;
+        public bool SubmitButtonShowing
+        {
+            get
+            {
+                return _SubmitButtonShowing;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _SubmitButtonShowing, value);
+            }
+        }
+        private bool _ReturnHomeButtonShowing = false;
+        public bool ReturnHomeButtonShowing
+        {
+            get
+            {
+                return _ReturnHomeButtonShowing;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _ReturnHomeButtonShowing, value);
+            }
+        }
+
         //method that scores and submitts quiz
         public void ScoreQuiz()
         {
+
             if (!question1.answered() || !question2.answered() || !question3.answered() || !question4.answered() || !question5.answered())
             {
                 warningVisible = true; 
@@ -174,8 +212,10 @@ namespace fbla.ViewModels
             }
             else
             {
+
                 submitted = true;
-                
+                SubmitButtonShowing = false;
+                ReturnHomeButtonShowing = true;
                 result1 = "Question 1: " + question1.score + "/1";
                 result2 = "Question 2: " + question2.score + "/1";
                 result3 = "Question 3: " + question3.score + "/1";

@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="fbla.Views.HomeScreenView"
+		>
+	<Grid RowDefinitions="*, 7*" Background="#D7E8F6">
+		<TextBlock Text="{Binding Greeting}" TextAlignment="Center"
+				   Background="#58B5FF" Grid.Row="0" FontSize="48"
+				   FontFamily="Palatino Linotype"></TextBlock>
+		<Grid RowDefinitions="*, *, *" Grid.Row="1">
+			<Button Grid.Row="0"  IsEnabled="True" 
+					Width="277" Height="100"
+					Command="{Binding $parent[Window].DataContext.startQuiz}"
+					HorizontalAlignment="Center"
+					Background="#D7E8F6"
+					VerticalAlignment="Center">
+				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Start Quiz</TextBlock>
+			</Button>
+			<Button Grid.Row="1"  IsEnabled="True"
+					Width="277" Height="100"
+					Command="{Binding $parent[Window].DataContext.PastResults}"
+					HorizontalAlignment="Center"
+					Background="#D7E8F6"
+					VerticalAlignment="Center">
+				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Past results</TextBlock>
+			</Button>
+			<Button Grid.Row="3"  IsEnabled="True"
+					Width="277" Height="100"
+					Click="OnQuitClicked"
+					HorizontalAlignment="Center"
+					Background="#D7E8F6"
+					VerticalAlignment="Center">
+				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Quit</TextBlock>
+			</Button>
+		</Grid>
+		
+		
+	</Grid>
+</UserControl>
