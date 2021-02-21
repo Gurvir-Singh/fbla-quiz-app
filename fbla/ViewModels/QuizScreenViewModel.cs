@@ -74,7 +74,7 @@ namespace fbla.ViewModels
             }
         }
         //string containg the popup/warning text that changes after questions have been submitted
-        private string _popupText = "One or more of the questions wasnt answered please ensure you have answered all questions.";
+        private string _popupText = "One or more of the questions was not answered please ensure you have answered all questions.";
         public string popupText
         {
             get
