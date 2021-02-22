@@ -4,8 +4,10 @@ using System.Text;
 using ReactiveUI;
 namespace fbla.Models
 {
+    [Serializable]
     public class MultipleChoiceQuestion
     {
+        public string type = "MultipleChoice";
         private bool _answered = false;
         public bool answered { get { return _answered; } set { _answered = value; } }
         public MultipleChoiceQuestion() { }

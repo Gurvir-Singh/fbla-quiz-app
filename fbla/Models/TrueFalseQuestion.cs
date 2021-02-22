@@ -4,9 +4,10 @@ using System.Text;
 
 namespace fbla.Models
 {
+    [Serializable]
     public class TrueFalseQuestion
     {
-
+        public string type = "TrueFalse";
         private bool _answered = false;
         public bool answered { get { return _answered; } set { _answered = value; } }
         public TrueFalseQuestion() { }
@@ -37,6 +38,6 @@ namespace fbla.Models
             }
             return false;
         }
-        public bool correct { get { return answeredCorrectly(); } }
+        public bool correct { get; set; }
     }
 }

@@ -26,6 +26,76 @@ namespace fbla.ViewModels
             questionModel = new MultipleChoiceQuestion(response, questionNum);
             
         }
+        public MultipleChoiceQuestionViewModel(MultipleChoiceQuestion q, int questionNum)
+        {
+            groupName = questionNum.ToString();
+            questionModel = q;
+            switch (q.answerSelected)
+            {
+                case 1:
+                    Answer1Selected = true;
+                    break;
+                case 2:
+                    Answer2Selected = true;
+                    break;
+                case 3:
+                    Answer3Selected = true;
+                    break;
+                case 4:
+                    Answer4Selected = true;
+                    break;
+            }
+        }
+
+        private bool _Answer1Selected = false;
+        public bool Answer1Selected
+        {
+            get
+            {
+                return _Answer1Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer1Selected, value);
+            }
+        }
+        private bool _Answer2Selected = false;
+        public bool Answer2Selected
+        {
+            get
+            {
+                return _Answer2Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer2Selected, value);
+            }
+        }
+        private bool _Answer3Selected = false;
+        public bool Answer3Selected
+        {
+            get
+            {
+                return _Answer3Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer3Selected, value);
+            }
+        }
+        private bool _Answer4Selected = false;
+        public bool Answer4Selected
+        {
+            get
+            {
+                return _Answer4Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer4Selected, value);
+            }
+        }
+
         private bool _CorrectRect1 = false;
         public bool CorrectRect1
         {
@@ -212,34 +282,29 @@ namespace fbla.ViewModels
         //called when a radio button is pressed
         public void Selected1()
         {
-            
             questionModel.answerSelected = 1;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         public void Selected2()
         {
             questionModel.answerSelected = 2;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         public void Selected3()
         {
             questionModel.answerSelected = 3;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         public void Selected4()
         {
             questionModel.answerSelected = 4;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         
         public double score { 
             get
             {
-                if (correct)
+                if (questionModel.answeredCorrectly())
                 {
                     return 1;
                 }

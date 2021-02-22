@@ -13,7 +13,45 @@ namespace fbla.ViewModels
             groupName = questionNum.ToString();
             questionModel = new TrueFalseQuestion(response, questionNum);
         }
+        public TrueFalseQuestionViewModel(TrueFalseQuestion q, int questionNum)
+        {
+            groupName = questionNum.ToString();
+            questionModel = q;
+            switch (q.answerSelected)
+            {
+                case 1:
+                    Answer1Selected = true;
+                    break;
+                case 2:
+                    Answer2Selected = true;
+                    break;
+            }
+            }
 
+        private bool _Answer1Selected = false;
+        public bool Answer1Selected
+        {
+            get
+            {
+                return _Answer1Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer1Selected, value);
+            }
+        }
+        private bool _Answer2Selected = false;
+        public bool Answer2Selected
+        {
+            get
+            {
+                return _Answer2Selected;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _Answer2Selected, value);
+            }
+        }
         public TrueFalseQuestion questionModel { get; }
 
         private bool _correct = false;
@@ -156,20 +194,18 @@ namespace fbla.ViewModels
         {
             questionModel.answerSelected = 1;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         public void Selected2()
         {
             questionModel.answerSelected = 2;
             questionModel.answered = true;
-            correct = questionModel.answeredCorrectly();
         }
         //returns the points earned from the question
         public double score
         {
             get
             {
-                if (correct)
+                if (questionModel.answeredCorrectly())
                 {
                     return 1;
                 }

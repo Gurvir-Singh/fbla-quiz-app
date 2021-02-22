@@ -28,7 +28,7 @@ namespace fbla.ViewModels
 
         public void startQuiz()
         {
-            CurrentScreen = new QuizScreenViewModel();
+            CurrentScreen = new QuizScreenViewModel("C:\\Users\\chari\\Documents\\fblaResults\\2212021115614.json");
         }
         public void PastResults()
         {

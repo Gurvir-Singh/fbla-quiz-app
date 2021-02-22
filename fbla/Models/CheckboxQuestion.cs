@@ -4,10 +4,11 @@ using System.Text;
 
 namespace fbla.Models
 {
+    [Serializable]
     public class CheckboxQuestion
     {
-        
-
+        public List<int> choicesSelected = new List<int>();
+        public string type = "Checkbox";
         public CheckboxQuestion() { }
         public CheckboxQuestion(string[] response, int questionNum)
         {

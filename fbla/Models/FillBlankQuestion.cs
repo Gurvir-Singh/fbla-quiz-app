@@ -4,11 +4,13 @@ using System.Text;
 
 namespace fbla.Models
 {
+    [Serializable]
     public class FillBlankQuestion
     {
+        public string type = "FillBlank";
         private bool _answered = false;
-        public bool answered { get { return _answered; } set { _answered = value; } } 
-
+        public bool answered { get { return _answered; } set { _answered = value; } }
+        public int selectedIndex = 0;
         public FillBlankQuestion() { }
         public FillBlankQuestion(string[] response, int questionNum)
         {

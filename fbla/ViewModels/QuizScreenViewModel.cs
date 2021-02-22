@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using ReactiveUI;
 using fbla.Models;
+using Newtonsoft.Json;
+using System.IO;
+using Newtonsoft.Json.Linq;
+
 namespace fbla.ViewModels
 {
     public class QuizScreenViewModel : ViewModelBase
     {
         //Constructor
         public QuizScreenViewModel() {
+
             Serializer bruh = new Serializer();
             List<List<String>> questionsResult = bruh.getQuestions();
             int i = 1;
@@ -38,6 +43,39 @@ namespace fbla.ViewModels
             question4 = questionList[3];
             question5 = questionList[4];
             
+        }
+        public QuizScreenViewModel(string path)
+        {
+            List<dynamic> dyns = new List<dynamic>();
+            List<JObject> questionsD = JsonConvert.DeserializeObject<List<JObject>>(File.ReadAllText(path));
+            string s = questionsD[0]["type"].ToObject<string>();
+            int i = 1;
+            foreach (JObject o in questionsD)
+            {
+                if (o["type"].ToObject<string>() == "MultipleChoice")
+                {
+                    dyns.Add(new MultipleChoiceQuestionViewModel(o.ToObject<MultipleChoiceQuestion>(), i));
+                }
+                else if (o["type"].ToObject<string>() == "FillBlank")
+                {
+                    dyns.Add(new FillBlankQuestionViewModel(o.ToObject<FillBlankQuestion>()));
+                }
+                else if (o["type"].ToObject<string>() == "Checkbox")
+                {
+                    dyns.Add(new CheckboxQuestionViewModel(o.ToObject<CheckboxQuestion>(), i));
+                }
+                else if (o["type"].ToObject<string>() == "TrueFalse")
+                {
+                    dyns.Add(new TrueFalseQuestionViewModel(o.ToObject<TrueFalseQuestion>(), i));
+                }
+                i++;
+            }
+            question1 = dyns[0];
+            question2 = dyns[1];
+            question3 = dyns[2];
+            question4 = dyns[3];
+            question5 = dyns[4];
+            this.ShowPrevResults();
         }
         //warning for not answering a question, also used as a pop up to alert of a successful report export
         private bool _warningVisible = false;
@@ -282,6 +320,7 @@ namespace fbla.ViewModels
         }
 
         //method that scores and submitts quiz
+
         public void ScoreQuiz(bool submittingEarly = false)
         {
 
@@ -302,7 +341,6 @@ namespace fbla.ViewModels
 
                 submitted = true;
                 SubmitButtonShowing = false;
-                ReturnHomeButtonShowing = true;
                 result1 = "Question 1: " + question1.score + "/1";
                 result2 = "Question 2: " + question2.score + "/1";
                 result3 = "Question 3: " + question3.score + "/1";
@@ -319,11 +357,30 @@ namespace fbla.ViewModels
             }
             
         }
+        public void ShowPrevResults()
+        {
+            submitted = true;
+            SubmitButtonShowing = false;
+            result1 = "Question 1: " + question1.score + "/1";
+            result2 = "Question 2: " + question2.score + "/1";
+            result3 = "Question 3: " + question3.score + "/1";
+            result4 = "Question 4: " + question4.score + "/1";
+            result5 = "Question 5: " + question5.score + "/1";
+            double totalScore = question1.score + question2.score + question3.score + question4.score + question5.score;
+            totalResult = "Total score: " + totalScore + "/5";
+            question1.showResult();
+            question2.showResult();
+            question3.showResult();
+            question4.showResult();
+            question5.showResult();
+            score = totalScore;
+        }
         //handles saving the results to a txt doc
         public void saveResults()
         {
             Serializer sz = new Serializer();
-            sz.printFormatter(questionList);
+            sz.jsonFormatter(questionList);
+            okVisible = true;
             popupText = "Saved succsessfully to the documents folder";
             warningVisible = true;
         }

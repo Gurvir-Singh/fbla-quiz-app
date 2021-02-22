@@ -18,7 +18,7 @@
 		
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectRect1}" Fill="LightGreen" ></Rectangle>
-			<RadioButton
+			<RadioButton IsChecked="{Binding Answer1Selected}"
 					     Content="{Binding questionModel.Answer1}"
 						 Command="{Binding Selected1}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
@@ -29,7 +29,7 @@
 		
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectRect2}" Fill="LightGreen" ></Rectangle>
-			<RadioButton Content="{Binding questionModel.Answer2}"
+			<RadioButton Content="{Binding questionModel.Answer2}" IsChecked="{Binding Answer2Selected}"
 						 Command="{Binding Selected2}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
 						 GroupName="{Binding groupName}"></RadioButton>
@@ -39,7 +39,7 @@
 		
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectRect3}" Fill="LightGreen" ></Rectangle>
-			<RadioButton Content="{Binding questionModel.Answer3}"
+			<RadioButton Content="{Binding questionModel.Answer3}" IsChecked="{Binding Answer3Selected}"
 						 Command="{Binding Selected3}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
 						 GroupName="{Binding groupName}"></RadioButton>
@@ -49,7 +49,7 @@
 
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectRect4}" Fill="LightGreen" ></Rectangle>
-			<RadioButton Content="{Binding questionModel.Answer4}"
+			<RadioButton Content="{Binding questionModel.Answer4}" IsChecked="{Binding Answer4Selected}"
 						 Command="{Binding Selected4}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
 						 GroupName="{Binding groupName}"></RadioButton>

@@ -8,6 +8,7 @@ using Avalonia.Input;
 namespace fbla.ViewModels
 
 {
+
     public class FillBlankQuestionViewModel : ViewModelBase
     {
         public bool answered()
@@ -67,6 +68,27 @@ namespace fbla.ViewModels
             }
 
         }
+        public FillBlankQuestionViewModel(FillBlankQuestion q)
+        {
+            questionModel = q;
+            switch (questionModel.correctAnswer)
+            {
+                case 1:
+                    correctAnswerText = "The correct answer was: " + questionModel.Answer1;
+                    break;
+                case 2:
+                    correctAnswerText = "The correct answer was: " + questionModel.Answer2;
+                    break;
+                case 3:
+                    correctAnswerText = "The correct answer was: " + questionModel.Answer3;
+                    break;
+                case 4:
+                    correctAnswerText = "The correct answer was: " + questionModel.Answer4;
+                    break;
+            }
+            selectedIndex = q.selectedIndex;
+
+        }
         private bool _showCorrectAnswer = false;
         public bool showCorrectAnswer
         {
@@ -93,11 +115,16 @@ namespace fbla.ViewModels
 
         }
        
-        new public double score
+        public double score
         {
             get
             {
-                questionModel.answerSelected = selectedIndex;
+                questionModel.selectedIndex = selectedIndex;
+                if (questionModel.answerSelected != 0)
+                {
+                    questionModel.answerSelected = selectedIndex;
+                }
+                
                 if (questionModel.answeredCorrectly())
                 {
                     answeredCorrectly = true;
