@@ -3,7 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="fbla.Views.PrevResultListNodeView">
-  <Button Command="{Binding OpenPrevQuizResult}" Content="{Binding DocName}"
-		  FontFamily="Palatino Linotype" FontSize="16"/>
+             x:Class="fbla.Views.PrevResultListNodeView"
+			 xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Button Command="{Binding $parent[Window].DataContext.startQuiz}" CommandParameter="C:\Users\Gurv\Documents\fblaResults\222202163507.json"  Content="{Binding Model.DocName}"
+		  FontFamily="Palatino Linotype" FontSize="16">
+	  
+  </Button>
 </UserControl>

@@ -4,5 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fbla.Views.PastResultsScreenView">
-	<Button Command="{Binding $parent[Window].DataContext.ReturnToHome}" >Return to home</Button>
+	<UserControl.Styles>
+		<Style Selector="Button">
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="Background" Value="#D7E8F6"/>
+			<Setter Property="BorderBrush" Value="#97c3e7"/>
+		</Style>
+		<Style Selector="Button:pointerover">
+			<Setter	Property="Background" Value="#c1dbf1"></Setter>
+		</Style>
+		<Style Selector="Button#ReturnButton:pointerover">
+			<Setter Property="Background" Value="#66baff"/>
+		</Style>
+
+	</UserControl.Styles>
+	<ScrollViewer>
+		<Grid RowDefinitions="* 7*" ColumnDefinitions="*, 2*, *"  Background="#c1dbf1">
+			<Grid Grid.Row="0" Grid.ColumnSpan="3" ColumnDefinitions="*, 7*" Background="#66baff">
+				<Button Command="{Binding $parent[Window].DataContext.ReturnToHome}"
+						Width="100" Height="50" Grid.Column="0" Name="ReturnButton"
+						VerticalAlignment="Center" HorizontalAlignment="Center"
+						FontFamily="Palatino Linotype" FontSize="14"
+						>Return Home</Button>
+				<TextBlock Text="Select a previous result to review" FontFamily="Palatino Linotype"
+						   FontSize="24" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
+						   VerticalAlignment="Center" FontWeight="Bold"/>
+			</Grid>
+	        <ItemsControl Items="{Binding Items}" Grid.Row="1" Grid.Column="1">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <UserControl Width="400" Height="80" Content="{Binding}" Padding="0, 5, 0, 5"/>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+		</Grid>
+	</ScrollViewer>
 </UserControl>

@@ -11,6 +11,7 @@
 		</Style>
 		<Style Selector="StackPanel#Results > TextBlock">
 			<Setter Property="FontFamily" Value="Palatino Linotype"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
 		</Style>
 		<Style Selector="StackPanel#Results > Button">
 			<Setter Property="BorderBrush" Value="#97c3e7"/>
@@ -51,8 +52,8 @@
 				<UserControl Content="{Binding question5}" Padding="10"/>
 			</StackPanel>
 			<Grid Grid.Column="1" RowDefinitions="*, *, *">
-				<!--Submit Button -->
 				<Grid Grid.Row="0" RowDefinitions="*, *">
+					<!--Submit Button -->
 					<Button HorizontalAlignment="Center" Grid.Row="0" 
 							Command="{Binding ScoreQuiz}" Width="150" Height="75"
 							BorderBrush="#97c3e7" BorderThickness="1"
@@ -76,7 +77,8 @@
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result4}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result5}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding totalResult}"></TextBlock>
-					<Button Command="{Binding saveResults}">Save Results</Button>
+					<Button Command="{Binding saveResults}" IsVisible="{Binding !viewingOldResult}">Save Results</Button>
+					<Button Command="{Binding $parent[Window].DataContext.PastResults}" IsVisible="{Binding viewingOldResult}">Review another result</Button>
 				</StackPanel>
 			</Grid>
 			

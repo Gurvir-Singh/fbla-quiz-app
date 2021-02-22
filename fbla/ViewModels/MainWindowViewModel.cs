@@ -26,13 +26,20 @@ namespace fbla.ViewModels
             }
         }
 
-        public void startQuiz()
+        public void startQuiz(String path)
         {
-            CurrentScreen = new QuizScreenViewModel("C:\\Users\\chari\\Documents\\fblaResults\\2212021115614.json");
+            if (path == null)
+            {
+                CurrentScreen = new QuizScreenViewModel();
+            }
+            else
+            {
+                CurrentScreen = new QuizScreenViewModel(path);
+            }
         }
         public void PastResults()
         {
-            CurrentScreen = new PastResultsScreenViewModel();
+            CurrentScreen = new PastResultsScreenViewModel("C:\\Users\\Gurv\\Documents\\fblaResults");
         }
         
         public void ReturnToHome()

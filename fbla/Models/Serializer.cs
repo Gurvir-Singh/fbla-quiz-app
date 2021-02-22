@@ -40,6 +40,7 @@ namespace fbla.Models
             JsonSerializer js = new JsonSerializer();
             DateTime currentTime = DateTime.Now;
             char[] pathPrefix = currentTime.ToString().ToCharArray();
+            
             for (int i = 0; i < pathPrefix.Length; i++)
             {
                 if (pathPrefix[i] == '/' || pathPrefix[i] == '\\' || pathPrefix[i] == ':')
@@ -49,7 +50,7 @@ namespace fbla.Models
             }
             var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
-            String pathPrefixString = String.Concat(pathPrefix.Where(c => !Char.IsWhiteSpace(c)));
+            String pathPrefixString = String.Concat(pathPrefix);
             pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
             String path = documentsPath + "\\fblaResults\\";
             List<dynamic> qModels = new List<dynamic>();

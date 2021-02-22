@@ -7,13 +7,14 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
 
+
 namespace fbla.ViewModels
 {
     public class QuizScreenViewModel : ViewModelBase
     {
         //Constructor
         public QuizScreenViewModel() {
-
+            viewingOldResult = false;
             Serializer bruh = new Serializer();
             List<List<String>> questionsResult = bruh.getQuestions();
             int i = 1;
@@ -46,6 +47,7 @@ namespace fbla.ViewModels
         }
         public QuizScreenViewModel(string path)
         {
+            viewingOldResult = true;
             List<dynamic> dyns = new List<dynamic>();
             List<JObject> questionsD = JsonConvert.DeserializeObject<List<JObject>>(File.ReadAllText(path));
             string s = questionsD[0]["type"].ToObject<string>();
@@ -78,6 +80,18 @@ namespace fbla.ViewModels
             this.ShowPrevResults();
         }
         //warning for not answering a question, also used as a pop up to alert of a successful report export
+        private bool _viewingOldResult;
+        public bool viewingOldResult
+        {
+            get
+            {
+                return _viewingOldResult;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _viewingOldResult, value);
+            }
+        }
         private bool _warningVisible = false;
         public bool warningVisible
         {

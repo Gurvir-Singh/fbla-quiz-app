@@ -24,9 +24,16 @@
 	
 	
 	<Grid RowDefinitions="*, 7*" Background="#c1dbf1">
-		<TextBlock Text="{Binding Greeting}" TextAlignment="Center"
-				   Background="#66baff" Grid.Row="0" FontSize="48"
-				   FontFamily="Palatino Linotype"></TextBlock>
+		<Grid Grid.Row="0" ColumnDefinitions="*, *, *" Background="#66baff" >
+			<Image Width="100" Height="100" Source="/Assets/fblalogo.png" 
+				   HorizontalAlignment="Center" Grid.Column="0"></Image>
+			<TextBlock Text="{Binding Greeting}" TextAlignment="Center"
+					   HorizontalAlignment="Center"
+					   Grid.ColumnSpan="3" FontSize="48"
+					   FontFamily="Palatino Linotype"></TextBlock>
+			<Image Width="100" Height="100" Source="/Assets/fblalogo.png"
+				   HorizontalAlignment="Center" Grid.Column="2"></Image>
+		</Grid>
 		<Grid RowDefinitions="*, *, *" Grid.Row="1">
 			<Button Grid.Row="0"  IsEnabled="True" 
 					Width="277" Height="100"

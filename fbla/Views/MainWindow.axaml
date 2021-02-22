@@ -6,7 +6,7 @@
 		xmlns:v="clr-namespace:fbla.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="fbla.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/fblalogoCropped.png"
         Title="FBLA Quiz App"
 		xmlns:views="clr-namespace:fbla.Views"
 		Content="{Binding CurrentScreen}"
