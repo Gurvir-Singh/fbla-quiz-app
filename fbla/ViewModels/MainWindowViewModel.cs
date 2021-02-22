@@ -7,11 +7,11 @@ namespace fbla.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        
 
         public MainWindowViewModel()
         {
             CurrentScreen = new HomeScreenViewModel();
+            
         }
 
         private ViewModelBase _CurrentScreen;
@@ -32,22 +32,29 @@ namespace fbla.ViewModels
         }
         public void PastResults()
         {
-
+            CurrentScreen = new PastResultsScreenViewModel();
         }
         
         public void ReturnToHome()
         {
-            if (((QuizScreenViewModel)CurrentScreen).submitted)
+            if (CurrentScreen.GetType().Name == "QuizScreenViewModel")
             {
-                CurrentScreen = new HomeScreenViewModel();
-            }
-            else if (((QuizScreenViewModel)CurrentScreen).forceSubmitting)
-            {
-                CurrentScreen = new HomeScreenViewModel();
+                if (((QuizScreenViewModel)CurrentScreen).submitted)
+                {
+                    CurrentScreen = new HomeScreenViewModel();
+                }
+                else if (((QuizScreenViewModel)CurrentScreen).forceSubmitting)
+                {
+                    CurrentScreen = new HomeScreenViewModel();
+                }
+                else
+                {
+                    ((QuizScreenViewModel)CurrentScreen).EarlyLeaveWarning();
+                }
             }
             else
             {
-                ((QuizScreenViewModel)CurrentScreen).EarlyLeaveWarning();
+                CurrentScreen = new HomeScreenViewModel();
             }
         }
     }
