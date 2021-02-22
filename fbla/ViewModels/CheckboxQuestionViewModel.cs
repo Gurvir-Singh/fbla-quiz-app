@@ -5,6 +5,7 @@ using fbla.Models;
 using ReactiveUI;
 namespace fbla.ViewModels
 {
+
     public class CheckboxQuestionViewModel : ViewModelBase
     {
         //Checks wether the user has selected at least one option
@@ -299,6 +300,30 @@ namespace fbla.ViewModels
             questionModel = new CheckboxQuestion(response, questionNum);
 
         }
+        public CheckboxQuestionViewModel(CheckboxQuestion q, int questionNum)
+        {
+            questionModel = q;
+            choicesSelected = q.choicesSelected;
+            foreach (int i in choicesSelected)
+            {
+                switch (i)
+                {
+                    case 1:
+                        Answer1Checked = true;
+                        break;
+                    case 2:
+                        Answer2Checked = true;
+                        break;
+                    case 3:
+                        Answer3Checked = true;
+                        break;
+                    case 4:
+                        Answer4Checked = true;
+                        break;
+                }
+            }
+
+        }
         public List<int> choicesSelected = new List<int>();
         public void checkSelections()
         {
@@ -328,6 +353,7 @@ namespace fbla.ViewModels
         {
             get
             {
+                questionModel.choicesSelected = choicesSelected;
                 if (_score != -1)
                 {
                     return _score;

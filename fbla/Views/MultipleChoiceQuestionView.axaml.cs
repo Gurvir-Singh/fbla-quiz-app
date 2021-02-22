@@ -6,9 +6,11 @@ namespace fbla.Views
 {
     public class MultipleChoiceQuestionView : UserControl
     {
+
         public MultipleChoiceQuestionView()
         {
             this.InitializeComponent();
+            
         }
 
         private void InitializeComponent()

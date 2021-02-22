@@ -11,13 +11,14 @@ namespace fbla.Models
         List<List<String>> questions;
         public Serializer()
         {
-            //Gets the 50 questions from json file
-            questions = JsonConvert.DeserializeObject<List<List<String>>>(File.ReadAllText(@"C:\Users\Gurv\source\repos\fbla\fbla\Assets\Questions.json"));
+            
         }
         //gets 5 random questions from the 50 and returns it
         public List<List<String>> getQuestions()
         {
-            
+            string docPath = (Directory.GetParent((Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))).FullName)).FullName;
+            //Gets the 50 questions from json file
+            questions = JsonConvert.DeserializeObject<List<List<String>>>(File.ReadAllText(docPath + @"\source\repos\fbla-quiz-app\fbla\Assets\Questions.json"));
             List<List<String>> results = new List<List<string>>();
             do
             {
@@ -32,6 +33,33 @@ namespace fbla.Models
 
 
             return results;
+        }
+
+        public void jsonFormatter(List<dynamic> questionsList)
+        {
+            JsonSerializer js = new JsonSerializer();
+            DateTime currentTime = DateTime.Now;
+            char[] pathPrefix = currentTime.ToString().ToCharArray();
+            for (int i = 0; i < pathPrefix.Length; i++)
+            {
+                if (pathPrefix[i] == '/' || pathPrefix[i] == '\\' || pathPrefix[i] == ':')
+                {
+                    pathPrefix[i] = ' ';
+                }
+            }
+            var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
+            String pathPrefixString = String.Concat(pathPrefix.Where(c => !Char.IsWhiteSpace(c)));
+            pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
+            String path = documentsPath + "\\fblaResults\\";
+            List<dynamic> qModels = new List<dynamic>();
+            foreach(dynamic q in questionsList)
+            {
+                qModels.Add(q.questionModel);
+            }
+            using (StreamWriter sr = File.CreateText(path + pathPrefixString + @".json")) {
+                sr.Write(JsonConvert.SerializeObject(qModels));
+            }
         }
 
         //puts results data into text files in the documents folder

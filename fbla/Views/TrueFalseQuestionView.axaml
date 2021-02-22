@@ -9,7 +9,7 @@
 		<TextBlock FontWeight="Bold" HorizontalAlignment="Left" Text="{Binding questionModel.Question}" TextWrapping="Wrap" MaxWidth="500"></TextBlock>
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectNotSelected1}" Fill="LightGreen" ></Rectangle>
-			<RadioButton Content="{Binding questionModel.Answer1}"
+			<RadioButton Content="{Binding questionModel.Answer1}" IsChecked="{Binding Answer1Selected}"
 						 Command="{Binding Selected1}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
 						 GroupName="{Binding groupName}"></RadioButton>
@@ -19,7 +19,7 @@
 
 		<Grid ColumnDefinitions="Auto, Auto" RowDefinitions="*">
 			<Rectangle IsVisible="{Binding CorrectNotSelected2}" Fill="LightGreen" ></Rectangle>
-			<RadioButton Content="{Binding questionModel.Answer2}"
+			<RadioButton Content="{Binding questionModel.Answer2}" IsChecked="{Binding Answer2Selected}"
 						 Command="{Binding Selected2}" Grid.Row="0" Grid.Column="0"
 						 IsEnabled="{Binding enabled}"
 						 GroupName="{Binding groupName}"></RadioButton>
