@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fbla.Views.FillBlankQuestionView">
-	<Grid ColumnDefinitions="Auto, Auto, Auto" RowDefinitions="Auto, Auto, Auto" >
+	<Grid ColumnDefinitions="Auto, *, *" RowDefinitions="Auto, Auto, Auto" >
 		<TextBlock FontWeight="Bold" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding questionModel.Question}" TextWrapping="Wrap" MaxWidth="500"></TextBlock>
 		<ComboBox Grid.Column="0" Grid.Row="1" SelectedIndex="{Binding selectedIndex}" 
 				  IsEnabled="{Binding enabled}"
@@ -16,9 +16,9 @@
 			<ComboBoxItem Content="{Binding questionModel.Answer4}"></ComboBoxItem>
 			
 		</ComboBox>
-		<Image IsVisible="{Binding answeredCorrectly}" Width="25" Height="25" Grid.Row="1" Grid.Column="1" Source="/Assets/Correct.png"></Image>
-		<Image IsVisible="{Binding showCorrectAnswer}" Width="25" Height="25" Grid.Row="1" Grid.Column="1" Source="/Assets/Incorrect.png"></Image>
-		<TextBlock IsVisible="{Binding showCorrectAnswer}" Grid.Row="1" Grid.Column="2" Text="{Binding correctAnswerText}"></TextBlock>
+		<Image HorizontalAlignment="Left" IsVisible="{Binding answeredCorrectly}" Width="25" Height="25" Grid.Row="1" Grid.Column="1" Source="/Assets/Correct.png"></Image>
+		<Image HorizontalAlignment="Left" IsVisible="{Binding showCorrectAnswer}" Width="25" Height="25" Grid.Row="1" Grid.Column="1" Source="/Assets/Incorrect.png"></Image>
+		<TextBlock Margin="30, 5, 0, 0" HorizontalAlignment="Left" IsVisible="{Binding showCorrectAnswer}" Grid.Row="1" Grid.Column="1" Text="{Binding correctAnswerText}"></TextBlock>
 		
 	</Grid>
 </UserControl>

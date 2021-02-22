@@ -18,7 +18,7 @@ namespace fbla.ViewModels
             Serializer bruh = new Serializer();
             List<List<String>> questionsResult = bruh.getQuestions();
             int i = 1;
-            
+
             foreach (List<String> question in questionsResult)
             {
                 switch (question[0])
@@ -43,7 +43,7 @@ namespace fbla.ViewModels
             question3 = questionList[2];
             question4 = questionList[3];
             question5 = questionList[4];
-            
+
         }
         public QuizScreenViewModel(string path)
         {
@@ -131,8 +131,8 @@ namespace fbla.ViewModels
                     question3.enabled = false;
                     question4.enabled = false;
                     question5.enabled = false;
-                    
-                    
+
+
                 }
             }
         }
@@ -198,7 +198,7 @@ namespace fbla.ViewModels
         private double _score = 0;
         public double score
         {
-            get 
+            get
             {
                 return _score;
             }
@@ -343,7 +343,7 @@ namespace fbla.ViewModels
                 popupText = "One or more of the questions was not answered. Are you sure you want to submit?";
                 submitEarly = true;
                 noVisible = true;
-                warningVisible = true; 
+                warningVisible = true;
                 question1.enabled = false;
                 question2.enabled = false;
                 question3.enabled = false;
@@ -369,7 +369,7 @@ namespace fbla.ViewModels
                 question5.showResult();
                 score = totalScore;
             }
-            
+
         }
         public void ShowPrevResults()
         {
@@ -389,13 +389,28 @@ namespace fbla.ViewModels
             question5.showResult();
             score = totalScore;
         }
-        //handles saving the results to a txt doc
+
+        private bool _saveResultsEnabled = true;
+        public bool saveResultsEnabled
+        {
+            get
+            {
+                return _saveResultsEnabled;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _saveResultsEnabled, value);
+            }
+        }
+
+        //handles saving the results to a json file
         public void saveResults()
         {
+            saveResultsEnabled = false;
             Serializer sz = new Serializer();
             sz.jsonFormatter(questionList);
             okVisible = true;
-            popupText = "Saved succsessfully to the documents folder";
+            popupText = "Saved succsessfully. You can review this quiz and others on the \"Past Results\" page";
             warningVisible = true;
         }
     }

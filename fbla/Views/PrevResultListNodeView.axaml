@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="fbla.Views.PrevResultListNodeView"
 			 xmlns:sys="clr-namespace:System;assembly=mscorlib">
-  <Button Command="{Binding $parent[Window].DataContext.startQuiz}" CommandParameter="C:\Users\Gurv\Documents\fblaResults\222202163507.json"  Content="{Binding Model.DocName}"
+  <Button Command="{Binding $parent[Window].DataContext.startQuiz}" CommandParameter="{Binding path}"  Content="{Binding Model.DocName}"
 		  FontFamily="Palatino Linotype" FontSize="16">
 	  
   </Button>

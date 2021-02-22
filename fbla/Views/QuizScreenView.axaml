@@ -77,7 +77,7 @@
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result4}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result5}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding totalResult}"></TextBlock>
-					<Button Command="{Binding saveResults}" IsVisible="{Binding !viewingOldResult}">Save Results</Button>
+					<Button Command="{Binding saveResults}" IsEnabled="{Binding saveResultsEnabled}" IsVisible="{Binding !viewingOldResult}">Save Results</Button>
 					<Button Command="{Binding $parent[Window].DataContext.PastResults}" IsVisible="{Binding viewingOldResult}">Review another result</Button>
 				</StackPanel>
 			</Grid>
