@@ -13,10 +13,10 @@ namespace fbla.ViewModels
     public class QuizScreenViewModel : ViewModelBase
     {
         //Constructor
-        public QuizScreenViewModel() {
+        public QuizScreenViewModel(Serializer serZ) {
             viewingOldResult = false;
-            Serializer bruh = new Serializer();
-            List<List<String>> questionsResult = bruh.getQuestions();
+            Serializer sz = serZ;
+            List<List<String>> questionsResult = sz.getQuestions();
             int i = 1;
 
             foreach (List<String> question in questionsResult)

@@ -6,13 +6,38 @@
 		xmlns:v="clr-namespace:fbla.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="fbla.Views.MainWindow"
-        Icon="/Assets/fblalogoCropped.png"
+        Icon="/Assets/fblalogoTransparent.png"
         Title="FBLA Quiz App"
 		xmlns:views="clr-namespace:fbla.Views"
-		Content="{Binding CurrentScreen}"
 		Width="{Binding CurrentScreen.Width}">
-
-	
+	<Window.Background>
+		<ImageBrush Source="/Assets/Background.png" Stretch="Fill"/>
+	</Window.Background>
+	<Window.Styles>
+		<Style Selector="UserControl:disabled">
+			<Style.Animations>
+				<Animation Duration="0:0:0.5" PlaybackDirection="{Binding playBackDirection}" >
+					<KeyFrame Cue="0%">
+						<Setter Property="Opacity" Value="0.0"/>
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Opacity" Value="1.0"/>
+					</KeyFrame>
+				</Animation>
+				<Animation Duration="0:0:0.5" Easing="QuadraticEaseIn" PlaybackDirection="{Binding playBackDirection}">
+					<KeyFrame Cue="0%">
+						<Setter Property="Grid.RowSpan" Value="1"></Setter>
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Grid.RowSpan" Value="20"></Setter>
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
+	</Window.Styles>
+	<Grid  RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+		<UserControl IsVisible="{Binding visible}" IsEnabled="{Binding disabledForAnimation}" Name="Screen" Content="{Binding CurrentScreen}" Grid.RowSpan="20"></UserControl>
+	</Grid>
 	
 
 

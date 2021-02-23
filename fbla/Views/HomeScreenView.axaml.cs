@@ -15,10 +15,11 @@ namespace fbla.Views
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+
         }
         private void OnQuitClicked(object sender, RoutedEventArgs e)
         {
-            ((Window)this.Parent).Close();
+            ((Window)this.Parent.Parent.Parent).Close();
         }
 
     }

@@ -7,33 +7,47 @@
 	<UserControl.Styles>
 		<Style Selector="Button">
 			<Setter Property="FontWeight" Value="Bold" />
-			<Setter Property="Background" Value="#D7E8F6"/>
+			<Setter Property="Background" Value="#97c3e7"/>
+			<Setter Property="Opacity" Value="100"/>
+			
 			<Setter Property="BorderBrush" Value="#97c3e7"/>
 		</Style>
 		<Style Selector="Button:pointerover">
 			<Setter	Property="Background" Value="#c1dbf1"></Setter>
 		</Style>
-		<Style Selector="Button#ReturnButton:pointerover">
-			<Setter Property="Background" Value="#66baff"/>
+		<Style Selector="Button:pressed">
+			<Setter Property="Opacity" Value="0"/>
 		</Style>
+
 
 	</UserControl.Styles>
 	<ScrollViewer>
-		<Grid RowDefinitions="* 7*" ColumnDefinitions="*, 2*, *"  Background="#c1dbf1">
-			<Grid Grid.Row="0" Grid.ColumnSpan="3" ColumnDefinitions="*, 7*" Background="#66baff">
-				<Button Command="{Binding $parent[Window].DataContext.ReturnToHome}"
-						Width="100" Height="50" Grid.Column="0" Name="ReturnButton"
-						VerticalAlignment="Center" HorizontalAlignment="Center"
-						FontFamily="Palatino Linotype" FontSize="14"
-						>Return Home</Button>
+		
+		<Grid RowDefinitions="*, 7*" ColumnDefinitions="*, 2*, *"  >
+			<Grid Grid.Row="0" Grid.ColumnSpan="3">
+				
 				<TextBlock Text="Select a previous result to review" FontFamily="Palatino Linotype"
 						   FontSize="24" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
 						   VerticalAlignment="Center" FontWeight="Bold"/>
 			</Grid>
+			<Border BorderThickness="4" CornerRadius="5" Padding="4" Grid.Column="3" Grid.Row="1"
+							Width="110" Height="60" BorderBrush="#97c3e7" Background="#97c3e7"
+							VerticalAlignment="Top" HorizontalAlignment="Center" Margin="25">
+				<Grid>
+					<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"
+							FontFamily="Palatino Linotype" FontSize="14" Grid.Row="0" Grid.Column="0" Margin="0"
+							Text="Return Home"/>
+					<Button Command="{Binding $parent[Window].DataContext.ReturnToHome}"
+							HorizontalContentAlignment="Center" Margin="1, 0, 0, 0"
+							Width="100" Height="50" Name="ReturnButton" BorderThickness="0"
+							FontFamily="Palatino Linotype" FontSize="14" Grid.Row="0" Grid.Column="0"
+							><TextBlock Text="Return Home"/></Button>
+				</Grid>
+			</Border>
 	        <ItemsControl Items="{Binding Items}" Grid.Row="1" Grid.Column="1">
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                  <UserControl Width="400" Height="80" Content="{Binding}" Padding="0, 5, 0, 5"/>
+                  <UserControl Width="400" Height="80" Content="{Binding}" Padding="0, 10, 0, 0"/>
                 </DataTemplate>
               </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -10,11 +10,14 @@ namespace fbla.Views
         public QuizScreenView()
         {
             this.InitializeComponent();
+            
         }
-
+        
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+            this.IsEnabled = false;
+            this.IsEnabled = true;
         }
     }
 }

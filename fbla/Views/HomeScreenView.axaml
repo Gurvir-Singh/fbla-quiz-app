@@ -9,22 +9,49 @@
 		<Style Selector="TextBlock">
 			<Setter Property="FontWeight" Value="Bold" />
 		</Style>
+		<Style Selector="Border">
+			<Setter Property="Width" Value="287"/>
+			<Setter Property="Height" Value="110"/>
+			<Setter Property="Background" Value="#97c3e7"/>
+			<Setter Property="BorderBrush" Value="#97c3e7"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Padding" Value="4"/>
+			<Setter Property="CornerRadius" Value="5"/>
+		</Style>
+		<Style Selector="Border#quitButtonBorder">
+			<Setter Property="Width" Value="287"/>
+			<Setter Property="Height" Value="110"/>
+			<Setter Property="Background" Value="#ff4d4d"/>
+			<Setter Property="BorderBrush" Value="#ff4d4d"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Padding" Value="4"/>
+			<Setter Property="CornerRadius" Value="5"/>
+		</Style>
 		<Style Selector="Button">
 			<Setter Property="FontWeight" Value="Bold" />
-			<Setter Property="Background" Value="#D7E8F6"/>
+			<Setter	Property="Background" Value="#97c3e7"/>
 			<Setter Property="BorderBrush" Value="#97c3e7"/>
+			
 		</Style>
 		<Style Selector="Button:pointerover">
-			<Setter	Property="Background" Value="#c1dbf1"></Setter>
+			<Setter	Property="Background" Value="#c1dbf1"/>
+			<Setter Property="BorderBrush" Value="#c1dbf1"/>
+		</Style>
+		<Style Selector="Button:pressed">
+			<Setter Property="Opacity" Value="0"/>
+		</Style>
+		<Style Selector="Button#quitButton">
+			<Setter Property="Background" Value="#ff4d4d"/>
 		</Style>
 		<Style Selector="Button#quitButton:pointerover">
-			<Setter Property="Background" Value="#e66565"></Setter>
+			<Setter Property="Background" Value="#ff8080"/>
 		</Style>
+		
 	</UserControl.Styles>
 	
 	
-	<Grid RowDefinitions="*, 7*" Background="#c1dbf1">
-		<Grid Grid.Row="0" ColumnDefinitions="*, *, *" Background="#66baff" >
+	<Grid RowDefinitions="*, 7*">
+		<Grid Grid.Row="0" ColumnDefinitions="*, *, *" Background="#97c3e7" Name="TitleCard">
 			<Image Width="100" Height="100" Source="/Assets/fblalogo.png" 
 				   HorizontalAlignment="Center" Grid.Column="0"></Image>
 			<TextBlock Text="{Binding Greeting}" TextAlignment="Center"
@@ -35,28 +62,52 @@
 				   HorizontalAlignment="Center" Grid.Column="2"></Image>
 		</Grid>
 		<Grid RowDefinitions="*, *, *" Grid.Row="1">
-			<Button Grid.Row="0"  IsEnabled="True" 
-					Width="277" Height="100"
-					Command="{Binding $parent[Window].DataContext.startQuiz}"
-					HorizontalAlignment="Center"
-					VerticalAlignment="Center">
-				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Start Quiz</TextBlock>
-			</Button>
-			<Button Grid.Row="1"  IsEnabled="True"
-					Width="277" Height="100"
-					Command="{Binding $parent[Window].DataContext.PastResults}"
-					HorizontalAlignment="Center"
-					VerticalAlignment="Center">
-				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Past results</TextBlock>
-			</Button>
-			<Button Grid.Row="3"  IsEnabled="True"
-					Width="277" Height="100"
-					Click="OnQuitClicked"
-					HorizontalAlignment="Center"
-					VerticalAlignment="Center"
-					Name="quitButton">
-				<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Quit</TextBlock>
-			</Button>
+			<Grid.Background>
+				<ImageBrush Source="/Assets/Background.png" Opacity="{Binding $parent[Window].DataContext.backgroundOpacity}"/>
+			</Grid.Background>
+			<Border Grid.Row="0">
+				<Grid>
+					<TextBlock FontFamily="Palatino Linotype" FontSize="32" VerticalAlignment="Center" 
+							   HorizontalAlignment="Center" FontWeight="Bold"
+							   >Start Quiz</TextBlock>
+					<Button IsEnabled="True" BorderThickness="0"
+							Width="277" Height="100"
+							Command="{Binding $parent[Window].DataContext.startQuiz}"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center">
+						<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Start Quiz</TextBlock>
+				</Button>
+				</Grid>
+			</Border>
+			<Border Grid.Row="1">
+				<Grid>
+					<TextBlock FontFamily="Palatino Linotype" FontSize="32" VerticalAlignment="Center"
+								   HorizontalAlignment="Center" FontWeight="Bold"
+							   >Past Results</TextBlock>
+					<Button IsEnabled="True" BorderThickness="0"
+							Width="277" Height="100"
+							Command="{Binding $parent[Window].DataContext.PastResults}"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center">
+						<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Past Results</TextBlock>
+					</Button>
+				</Grid>
+			</Border>
+			<Border Grid.Row="2" Name="quitButtonBorder">
+				<Grid>
+					<TextBlock FontFamily="Palatino Linotype" FontSize="32" VerticalAlignment="Center"
+								   HorizontalAlignment="Center" FontWeight="Bold"
+							   >Quit</TextBlock>
+					<Button IsEnabled="True" BorderThickness="0"
+							Width="277" Height="100"
+							Click="OnQuitClicked"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Center"
+							Name="quitButton">
+						<TextBlock FontFamily="Palatino Linotype" FontSize="32" >Quit</TextBlock>
+					</Button>
+				</Grid>
+			</Border>
 		</Grid>
 		
 		

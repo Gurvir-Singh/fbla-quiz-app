@@ -6,19 +6,19 @@ using System.IO;
 using fbla.ViewModels;
 namespace fbla.Models
 {
-    class Serializer
+    public class Serializer
     {
         List<List<String>> questions;
         public Serializer()
         {
-            
+            string docPath = (Directory.GetParent((Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))).FullName)).FullName;
+            //Gets the 50 questions from json file
+            questions = JsonConvert.DeserializeObject<List<List<String>>>(File.ReadAllText(docPath + @"\source\repos\fbla-quiz-app\fbla\Assets\Questions.json"));
         }
         //gets 5 random questions from the 50 and returns it
         public List<List<String>> getQuestions()
         {
-            string docPath = (Directory.GetParent((Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))).FullName)).FullName;
-            //Gets the 50 questions from json file
-            questions = JsonConvert.DeserializeObject<List<List<String>>>(File.ReadAllText(docPath + @"\source\repos\fbla-quiz-app\fbla\Assets\Questions.json"));
+            
             List<List<String>> results = new List<List<string>>();
             do
             {
