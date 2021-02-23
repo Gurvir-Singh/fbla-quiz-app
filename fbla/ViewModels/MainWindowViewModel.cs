@@ -22,11 +22,11 @@ namespace fbla.ViewModels
         public void PlayAnimation(bool delayed = false)
         {
             backgroundOpacity = 0;
-            if (delayed) { Thread.Sleep(250); }
+            if (delayed) { Thread.Sleep(500); }
             playBackDirection = Avalonia.Animation.PlaybackDirection.Normal;
             visible = true;
             disabledForAnimation = false;
-            Thread.Sleep(500);
+            Thread.Sleep(750);
             disabledForAnimation = true;
 
         }
@@ -34,7 +34,7 @@ namespace fbla.ViewModels
         {
             playBackDirection = Avalonia.Animation.PlaybackDirection.Reverse;
             disabledForAnimation = false;
-            Thread.Sleep(500);
+            Thread.Sleep(750);
             disabledForAnimation = true;
         }
 
@@ -108,7 +108,7 @@ namespace fbla.ViewModels
         }
         public void SwitchToQuiz(String path)
         {
-            Thread.Sleep(500);
+            Thread.Sleep(750);
             animThread = new Thread(() => PlayAnimation());
             animThread.Start();
             if (path == null)
@@ -131,7 +131,7 @@ namespace fbla.ViewModels
         }
         public void SwitchToPastResults()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(750);
             animThread = new Thread(() => PlayAnimation());
             animThread.Start();
             CurrentScreen = new PastResultsScreenViewModel("C:\\Users\\Gurv\\Documents\\fblaResults");

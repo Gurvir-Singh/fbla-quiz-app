@@ -16,7 +16,7 @@
 	<Window.Styles>
 		<Style Selector="UserControl:disabled">
 			<Style.Animations>
-				<Animation Duration="0:0:0.5" PlaybackDirection="{Binding playBackDirection}" >
+				<Animation Duration="0:0:0.75"  PlaybackDirection="{Binding playBackDirection}" >
 					<KeyFrame Cue="0%">
 						<Setter Property="Opacity" Value="0.0"/>
 					</KeyFrame>
@@ -24,7 +24,7 @@
 						<Setter Property="Opacity" Value="1.0"/>
 					</KeyFrame>
 				</Animation>
-				<Animation Duration="0:0:0.5" Easing="QuadraticEaseIn" PlaybackDirection="{Binding playBackDirection}">
+				<Animation Duration="0:0:0.75" Easing="QuadraticEaseIn" PlaybackDirection="{Binding playBackDirection}">
 					<KeyFrame Cue="0%">
 						<Setter Property="Grid.RowSpan" Value="1"></Setter>
 					</KeyFrame>
