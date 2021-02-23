@@ -142,15 +142,17 @@ namespace fbla.ViewModels
             {
                 if (((QuizScreenViewModel)CurrentScreen).submitted)
                 {
-                    CurrentScreen = new HomeScreenViewModel();
-                    animThread = new Thread(() => PlayAnimation());
+                    animThread = new Thread(() => ReverseAnimtion());
+                    Thread switchThread = new Thread(() => switchToHome());
                     animThread.Start();
+                    switchThread.Start();
                 }
                 else if (((QuizScreenViewModel)CurrentScreen).forceSubmitting)
                 {
-                    CurrentScreen = new HomeScreenViewModel();
-                    animThread = new Thread(() => PlayAnimation());
+                    animThread = new Thread(() => ReverseAnimtion());
+                    Thread switchThread = new Thread(() => switchToHome());
                     animThread.Start();
+                    switchThread.Start();
                 }
                 else
                 {
@@ -159,10 +161,18 @@ namespace fbla.ViewModels
             }
             else
             {
-                CurrentScreen = new HomeScreenViewModel();
-                animThread = new Thread(() => PlayAnimation());
+                animThread = new Thread(() => ReverseAnimtion());
+                Thread switchThread = new Thread(() => switchToHome());
                 animThread.Start();
+                switchThread.Start();
             }
+        }
+        public void switchToHome()
+        {
+            Thread.Sleep(750);
+            CurrentScreen = new HomeScreenViewModel();
+            animThread = new Thread(() => PlayAnimation());
+            animThread.Start();
         }
     }
 }

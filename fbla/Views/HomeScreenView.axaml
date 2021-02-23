@@ -33,19 +33,34 @@
 			<Setter Property="BorderBrush" Value="#97c3e7"/>
 			
 		</Style>
-		<Style Selector="Button:pointerover">
-			<Setter	Property="Background" Value="#c1dbf1"/>
-			<Setter Property="BorderBrush" Value="#c1dbf1"/>
+		<Style Selector="Border:pointerover">
+			<Style.Animations>
+				<Animation Duration="0:0:0.5" PlaybackDirection="Normal"  Easing="QuadraticEaseOut">
+					<KeyFrame Cue="0%">
+						<Setter	Property="Width" Value="287"/>
+						<Setter Property="Height" Value="110"/>
+					</KeyFrame>
+					<KeyFrame Cue="50%">
+						<Setter	Property="Width" Value="297"/>
+						<Setter Property="Height" Value="120"/>
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter	Property="Width" Value="287"/>
+						<Setter Property="Height" Value="110"/>
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+			<Setter	Property="Width" Value="287"/>
+			<Setter Property="Height" Value="110"/>
 		</Style>
+		
 		<Style Selector="Button:pressed">
 			<Setter Property="Opacity" Value="0"/>
 		</Style>
 		<Style Selector="Button#quitButton">
 			<Setter Property="Background" Value="#ff4d4d"/>
 		</Style>
-		<Style Selector="Button#quitButton:pointerover">
-			<Setter Property="Background" Value="#ff8080"/>
-		</Style>
+		
 		
 	</UserControl.Styles>
 	

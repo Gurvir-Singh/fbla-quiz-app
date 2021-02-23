@@ -13,6 +13,7 @@
 	<Window.Background>
 		<ImageBrush Source="/Assets/Background.png" Stretch="Fill"/>
 	</Window.Background>
+	
 	<Window.Styles>
 		<Style Selector="UserControl:disabled">
 			<Style.Animations>
@@ -24,19 +25,19 @@
 						<Setter Property="Opacity" Value="1.0"/>
 					</KeyFrame>
 				</Animation>
-				<Animation Duration="0:0:0.75" Easing="QuadraticEaseIn" PlaybackDirection="{Binding playBackDirection}">
+				<Animation Duration="0:0:0.75" Easing="QuadraticEaseInOut" PlaybackDirection="{Binding playBackDirection}">
 					<KeyFrame Cue="0%">
 						<Setter Property="Grid.RowSpan" Value="1"></Setter>
 					</KeyFrame>
 					<KeyFrame Cue="100%">
-						<Setter Property="Grid.RowSpan" Value="20"></Setter>
+						<Setter Property="Grid.RowSpan" Value="30"></Setter>
 					</KeyFrame>
 				</Animation>
 			</Style.Animations>
 		</Style>
 	</Window.Styles>
-	<Grid  RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
-		<UserControl IsVisible="{Binding visible}" IsEnabled="{Binding disabledForAnimation}" Name="Screen" Content="{Binding CurrentScreen}" Grid.RowSpan="20"></UserControl>
+	<Grid  RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+		<UserControl IsVisible="{Binding visible}" IsEnabled="{Binding disabledForAnimation}" Name="Screen" Content="{Binding CurrentScreen}" Grid.RowSpan="30"></UserControl>
 	</Grid>
 	
 
