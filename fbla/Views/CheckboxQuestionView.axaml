@@ -36,7 +36,7 @@
 		</Grid>
 		<Grid ColumnDefinitions="Auto, Auto">
 			<Rectangle IsVisible="{Binding CorrectRect4}" Fill="LightGreen" ></Rectangle>
-			<CheckBox Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer4}"
+			<CheckBox Classes="Warning" Grid.Column="0" Grid.Row="0" Content="{Binding questionModel.Answer4}"
 						 IsChecked="{Binding Answer4Checked}"
 						 IsEnabled="{Binding enabled}"></CheckBox>
 			<Image Height="20" Width="20" Source="/Assets/Correct.png" Grid.Row="0" Grid.Column="1" IsVisible="{Binding isCorrectAnswer4}"></Image>

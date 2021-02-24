@@ -92,8 +92,8 @@
 			<Setter Property="Background" Value="#d9d9d9"/>
 		</Style>
 	</UserControl.Styles>
-	<ScrollViewer >
-		<Grid RowDefinitions="Auto" ColumnDefinitions="3*,2*">
+	<ScrollViewer>
+		<Grid Classes="Warning" RowDefinitions="Auto" ColumnDefinitions="3*,2*">
 			<!--Questions-->
 			<StackPanel Grid.Row="0" Grid.Column="0">
 				<UserControl Content="{Binding question1}" Padding="10"/>

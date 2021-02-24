@@ -4,6 +4,9 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.IO;
 using fbla.ViewModels;
+using ceTe.DynamicPDF;
+using ceTe.DynamicPDF.PageElements;
+
 namespace fbla.Models
 {
     public class Serializer
@@ -48,7 +51,7 @@ namespace fbla.Models
                     pathPrefix[i] = ' ';
                 }
             }
-            var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
             String pathPrefixString = String.Concat(pathPrefix);
             pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
@@ -63,7 +66,102 @@ namespace fbla.Models
             }
         }
 
-        //puts results data into text files in the documents folder
+        public void pdfFormatter(List<dynamic> questionsList)
+        {
+            DateTime currentTime = DateTime.Now;
+            char[] pathPrefix = currentTime.ToString().ToCharArray();
+
+            for (int j = 0; j < pathPrefix.Length; j++)
+            {
+                if (pathPrefix[j] == '/' || pathPrefix[j] == '\\' || pathPrefix[j] == ':')
+                {
+                    pathPrefix[j] = ' ';
+                }
+            }
+            var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
+            String pathPrefixString = (String.Concat(pathPrefix)).Trim();
+            pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
+            String path = documentsPath + "\\fblaResults\\";
+            Document document = new Document();
+            Page page = new Page(PageSize.Letter, PageOrientation.Portrait, 54.0f);
+            document.Pages.Add(page);
+            int i = 0;
+            float questionHeight = (page.Dimensions.Height - 100) / 50;
+            float answerHeight = (page.Dimensions.Height - 100) / 5 * 0.9f;
+            foreach (dynamic d in questionsList)
+            {
+                if (d.GetType() == (new MultipleChoiceQuestionViewModel()).GetType())
+                {
+                    string lineText = "";
+                    page.Elements.Add(new Label("Quistion: " + d.questionModel.Question, 0, ((page.Dimensions.Height - 100) / 5 * i), page.Dimensions.Width - 100, questionHeight, Font.Helvetica, 14, TextAlign.Left));
+                    lineText += "Answer 1: " + d.questionModel.Answer1 + "\n";
+                    lineText += "Answer 2: " + d.questionModel.Answer2 + "\n";
+                    lineText += "Answer 3: " + d.questionModel.Answer3 + "\n";
+                    lineText += "Answer 4: " + d.questionModel.Answer4 + "\n";
+                    lineText += "Correct Answer: " + d.questionModel.correctAnswer + "\n";
+                    lineText += "Answer Selected: " + d.questionModel.answerSelected + "\n";
+                    lineText += "Point(s): " + d.score + "/1" + "\n";
+                    lineText += "\n";
+                    page.Elements.Add(new Label(lineText, 0, ((page.Dimensions.Height - 100) / 5 * i) + (page.Dimensions.Height / 25), page.Dimensions.Width - 100, answerHeight, Font.Helvetica, 12, TextAlign.Left));
+                }
+                else if (d.GetType() == (new TrueFalseQuestionViewModel()).GetType())
+                {
+                    string lineText = "";
+                    page.Elements.Add(new Label("Question: " + d.questionModel.Question, 0, ((page.Dimensions.Height - 100) / 5 * i), page.Dimensions.Width - 100, questionHeight, Font.Helvetica, 14, TextAlign.Left));
+                    lineText += "Answer 1: " + d.questionModel.Answer1 + "\n";
+                    lineText += "Answer 2: " + d.questionModel.Answer2 + "\n";
+                    lineText += "Correct Answer: " + d.questionModel.correctAnswer + "\n";
+                    lineText += "Answer Selected: " + d.questionModel.answerSelected + "\n";
+                    lineText += "Point(s): " + d.score + "/1" + "\n";
+                    lineText += "\n";
+                    page.Elements.Add(new Label(lineText, 0, ((page.Dimensions.Height - 100) / 5 * i) + (page.Dimensions.Height / 25), page.Dimensions.Width - 100, answerHeight, Font.Helvetica, 12, TextAlign.Left));
+                }
+                else if (d.GetType() == (new FillBlankQuestionViewModel()).GetType())
+                {
+                    string lineText = "";
+                    page.Elements.Add(new Label("Question: " + d.questionModel.Question, 0, ((page.Dimensions.Height - 100) / 5 * i), page.Dimensions.Width - 100, questionHeight, Font.Helvetica, 14, TextAlign.Left));
+                    lineText += "Answer 1: " + d.questionModel.Answer1 + "\n";
+                    lineText += "Answer 2: " + d.questionModel.Answer2 + "\n";
+                    lineText += "Answer 3: " + d.questionModel.Answer3 + "\n";
+                    lineText += "Answer 4: " + d.questionModel.Answer4 + "\n";
+                    lineText += "Correct Answer: " + d.questionModel.correctAnswer + "\n";
+                    lineText += "Answer Selected: " + d.questionModel.answerSelected + "\n";
+                    lineText += "Point(s): " + d.score + "/1" + "\n";
+                    lineText += "\n";
+                    page.Elements.Add(new Label(lineText, 0, ((page.Dimensions.Height - 100) / 5 * i) + (page.Dimensions.Height / 25), page.Dimensions.Width - 100, answerHeight, Font.Helvetica, 12, TextAlign.Left));
+                }
+                else if (d.GetType() == (new CheckboxQuestionViewModel()).GetType())
+                {
+                    string lineText = "";
+                    page.Elements.Add(new Label("Question: " + d.questionModel.Question, 0, ((page.Dimensions.Height - 100) / 5 * i), page.Dimensions.Width - 100, questionHeight, Font.Helvetica, 14, TextAlign.Left));
+                    lineText += "Answer 1: " + d.questionModel.Answer1 + "\n";
+                    lineText += "Answer 2: " + d.questionModel.Answer2 + "\n";
+                    lineText += "Answer 3: " + d.questionModel.Answer3 + "\n";
+                    lineText += "Answer 4: " + d.questionModel.Answer4 + "\n";
+                    lineText += "Correct Answers: " + d.questionModel.correctAnswer1 + ", " + d.questionModel.correctAnswer2 + "\n";
+                    if (d.choicesSelected.Count == 2) {
+                        lineText += "Answer(s) Selected: " + d.questionModel.choicesSelected[0] + ", " + d.questionModel.choicesSelected[1] + "\n";
+                    }
+                    else if (d.choicesSelected.Count = 1)
+                    {
+                        lineText += "Answer(s) Selected: " + d.questionModel.choicesSelected[0] + "\n";
+                    }
+                    else
+                    {
+                        lineText += "No answer was selected\n";
+                    }
+                    lineText += "Point(s): " + d.score + "/1" + "\n";
+                    lineText += "\n";
+                    page.Elements.Add(new Label(lineText, 0, ((page.Dimensions.Height - 100) / 5 * i) + (page.Dimensions.Height / 25), page.Dimensions.Width - 100, answerHeight, Font.Helvetica, 12, TextAlign.Left));
+                }
+                i++;
+            }
+            document.Draw(path + pathPrefixString + ".pdf");
+        }
+
+        //puts results data into text files in the documents folder, no longer used
+        /*
         public void printFormatter(List<dynamic> questionsList)
         {
             DateTime currentTime = DateTime.Now;
@@ -264,6 +362,7 @@ namespace fbla.Models
                 }
             }
         }
+        */
         
     }
 }

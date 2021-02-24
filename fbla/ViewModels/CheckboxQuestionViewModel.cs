@@ -184,8 +184,8 @@ namespace fbla.ViewModels
             }
         }
         
-        new private bool _enabled = true;
-        new public bool enabled
+        private bool _enabled = true;
+        public bool enabled
         {
             get { return _enabled; }
             set => this.RaiseAndSetIfChanged(ref _enabled, value);
@@ -193,6 +193,39 @@ namespace fbla.ViewModels
         //shows the checkmarks, x's, and highlights correct answer
         public void showResult()
         {
+            if (choicesSelected.Count == 0)
+            {
+                switch (questionModel.correctAnswer1)
+                {
+                    case 1:
+                        CorrectRect1 = true;
+                        break;
+                    case 2:
+                        CorrectRect2 = true;
+                        break;
+                    case 3:
+                        CorrectRect3 = true;
+                        break;
+                    case 4:
+                        CorrectRect4 = true;
+                        break;
+                }
+                switch (questionModel.correctAnswer2)
+                {
+                    case 1:
+                        CorrectRect1 = true;
+                        break;
+                    case 2:
+                        CorrectRect2 = true;
+                        break;
+                    case 3:
+                        CorrectRect3 = true;
+                        break;
+                    case 4:
+                        CorrectRect4 = true;
+                        break;
+                }
+            }
             foreach (int i in choicesSelected)
             {
                 if (i == questionModel.correctAnswer1 || i == questionModel.correctAnswer2)

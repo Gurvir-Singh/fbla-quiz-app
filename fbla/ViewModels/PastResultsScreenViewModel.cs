@@ -8,10 +8,10 @@ namespace fbla.ViewModels
 {
     public class PastResultsScreenViewModel : ViewModelBase
     {
-        public PastResultsScreenViewModel(string Path)
+        public PastResultsScreenViewModel()
         {
             Items = new ObservableCollection<PrevResultListNodeViewModel>();
-            foreach (string f in Directory.GetFiles(Path))
+            foreach (string f in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults"))
             {
                 Items.Add(new PrevResultListNodeViewModel(f));
             }

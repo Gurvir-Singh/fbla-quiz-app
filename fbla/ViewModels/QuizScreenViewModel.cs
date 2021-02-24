@@ -247,7 +247,7 @@ namespace fbla.ViewModels
             forceSubmitting = false;
             noVisible = false;
             okVisible = false;
-            if (popupText != "Saved succsessfully to the documents folder")
+            if (!submitted)
             {
                 question1.enabled = true;
                 question2.enabled = true;
@@ -409,8 +409,10 @@ namespace fbla.ViewModels
             saveResultsEnabled = false;
             Serializer sz = new Serializer();
             sz.jsonFormatter(questionList);
+            sz.pdfFormatter(questionList);
             okVisible = true;
-            popupText = "Saved succsessfully. You can review this quiz and others on the \"Past Results\" page";
+            popupText = "Saved succsessfully to the documents folder";
+            //popupText = "Saved succsessfully. You can review this quiz and others on the \"Past Results\" page";
             warningVisible = true;
         }
     }

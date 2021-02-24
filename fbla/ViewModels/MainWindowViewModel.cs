@@ -134,7 +134,7 @@ namespace fbla.ViewModels
             Thread.Sleep(750);
             animThread = new Thread(() => PlayAnimation());
             animThread.Start();
-            CurrentScreen = new PastResultsScreenViewModel("C:\\Users\\Gurv\\Documents\\fblaResults");
+            CurrentScreen = new PastResultsScreenViewModel();
         }
         public void ReturnToHome()
         {

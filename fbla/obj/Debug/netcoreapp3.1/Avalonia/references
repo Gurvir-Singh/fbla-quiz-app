@@ -26,6 +26,7 @@ C:\Users\Gurv\.nuget\packages\avalonia\0.9.11\lib\netcoreapp2.0\Avalonia.Visuals
 C:\Users\Gurv\.nuget\packages\avalonia.win32\0.9.11\lib\netstandard2.0\Avalonia.Win32.dll
 C:\Users\Gurv\.nuget\packages\avalonia.x11\0.9.11\lib\netstandard2.0\Avalonia.X11.dll
 C:\Users\Gurv\.nuget\packages\dynamicdata\6.13.9\lib\netstandard2.0\DynamicData.dll
+C:\Users\Gurv\.nuget\packages\cete.dynamicpdf.coresuite.net\11.6.0\lib\portable-netstandard20+MonoAndroid10+Xamarin.iOS10+UAP10\DynamicPDF.NETStandard20.dll
 C:\Users\Gurv\.nuget\packages\fastreport.opensource\2021.1.2\lib\netstandard2.1\FastReport.dll
 C:\Users\Gurv\.nuget\packages\jetbrains.annotations\10.3.0\lib\netstandard1.0\JetBrains.Annotations.dll
 C:\Users\Gurv\.nuget\packages\microsoft.codeanalysis.csharp\3.2.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -159,7 +160,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Algorithms.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Csp.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Encoding.dll
-C:\Users\Gurv\.nuget\packages\system.security.cryptography.pkcs\4.5.2\ref\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\Gurv\.nuget\packages\system.security.cryptography.pkcs\4.7.0\ref\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.Primitives.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.Cryptography.X509Certificates.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\3.1.0\ref\netcoreapp3.1\System.Security.dll
