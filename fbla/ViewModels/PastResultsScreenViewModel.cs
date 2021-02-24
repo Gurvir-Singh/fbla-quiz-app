@@ -24,6 +24,11 @@ namespace fbla.ViewModels
         public PastResultsScreenViewModel()
         {
             Items = new ObservableCollection<PrevResultListNodeViewModel>();
+
+            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults"))
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults");
+            }
             if (Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults").Length > 6)
             {
                 scrollBarVisible = Avalonia.Controls.Primitives.ScrollBarVisibility.Visible;

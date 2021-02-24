@@ -248,7 +248,6 @@ C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\obj\Debug\netcoreapp3.1\fbla.csprojAssemblyReference.cache
 C:\Users\chari\Source\Repos\fbla-quiz-app\fbla\obj\Debug\netcoreapp3.1\fbla.AssemblyInfoInputs.cache
@@ -389,3 +388,5 @@ C:\Users\Gurv\source\repos\fbla-quiz-app\fbla\obj\Debug\netcoreapp3.1\fbla.genru
 C:\Users\Gurv\source\repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\DynamicPDF.NETStandard20.dll
 C:\Users\Gurv\source\repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Gurv\source\repos\fbla-quiz-app\fbla\obj\Debug\netcoreapp3.1\fbla.csproj.CoreCompileInputs.cache
+C:\Users\chari\source\repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\DynamicPDF.NETStandard20.dll
+C:\Users\chari\source\repos\fbla-quiz-app\fbla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
