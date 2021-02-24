@@ -11,7 +11,7 @@ namespace fbla.Models
             fullPath = path;
             string[] breakApart = fullPath.Split('\\');
             DocName = breakApart[breakApart.Length - 1];
-            DocName = DocName.Remove(DocName.IndexOf('.') - 1);
+            DocName = DocName.Remove(DocName.IndexOf('.'));
             char[] nameCharArr = DocName.ToCharArray();
             nameCharArr[DocName.Length - 3] = ':';
             nameCharArr[DocName.Length - 6] = ':';

@@ -409,6 +409,15 @@ namespace fbla.ViewModels
             saveResultsEnabled = false;
             Serializer sz = new Serializer();
             sz.jsonFormatter(questionList);
+            okVisible = true;
+            popupText = "Saved succsessfully. You can review this quiz and others on the \"Past Results\" page";
+            //popupText = "Saved succsessfully. You can review this quiz and others on the \"Past Results\" page";
+            warningVisible = true;
+        }
+        public void generatePrintableResult()
+        {
+            saveResultsEnabled = false;
+            Serializer sz = new Serializer();
             sz.pdfFormatter(questionList);
             okVisible = true;
             popupText = "Saved succsessfully to the documents folder";

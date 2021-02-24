@@ -37,7 +37,7 @@
 
 
 	</UserControl.Styles>
-	<ScrollViewer>
+	<ScrollViewer VerticalScrollBarVisibility="{Binding scrollBarVisible}">
 		
 		<Grid RowDefinitions="*, 2*, 5*" ColumnDefinitions="*, 2*, *"  >
 			<Grid Grid.Row="0" Grid.ColumnSpan="3">

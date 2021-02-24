@@ -42,7 +42,7 @@ namespace fbla.Models
         {
             JsonSerializer js = new JsonSerializer();
             DateTime currentTime = DateTime.Now;
-            char[] pathPrefix = currentTime.ToString().ToCharArray();
+            char[] pathPrefix = currentTime.ToString("M/d/yyyy HH:mm::ss").ToCharArray();
             
             for (int i = 0; i < pathPrefix.Length; i++)
             {
@@ -54,7 +54,7 @@ namespace fbla.Models
             var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
             String pathPrefixString = String.Concat(pathPrefix);
-            pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
+            //pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
             String path = documentsPath + "\\fblaResults\\";
             List<dynamic> qModels = new List<dynamic>();
             foreach(dynamic q in questionsList)
@@ -69,7 +69,7 @@ namespace fbla.Models
         public void pdfFormatter(List<dynamic> questionsList)
         {
             DateTime currentTime = DateTime.Now;
-            char[] pathPrefix = currentTime.ToString().ToCharArray();
+            char[] pathPrefix = currentTime.ToString("M/d/yyyy HH:mm:ss").ToCharArray();
 
             for (int j = 0; j < pathPrefix.Length; j++)
             {
@@ -143,7 +143,7 @@ namespace fbla.Models
                     if (d.choicesSelected.Count == 2) {
                         lineText += "Answer(s) Selected: " + d.questionModel.choicesSelected[0] + ", " + d.questionModel.choicesSelected[1] + "\n";
                     }
-                    else if (d.choicesSelected.Count = 1)
+                    else if (d.choicesSelected.Count == 1)
                     {
                         lineText += "Answer(s) Selected: " + d.questionModel.choicesSelected[0] + "\n";
                     }
