@@ -113,12 +113,27 @@
 	<ScrollViewer>
 		<Grid Classes="Warning" RowDefinitions="Auto" ColumnDefinitions="3*,2*">
 			<!--Questions-->
-			<StackPanel Grid.Row="0" Grid.Column="0">
-				<UserControl Content="{Binding question1}" Padding="10"/>
-				<UserControl Content="{Binding question2}" Padding="10"/>
-				<UserControl Content="{Binding question3}" Padding="10"/>
-				<UserControl Content="{Binding question4}" Padding="10"/>
-				<UserControl Content="{Binding question5}" Padding="10"/>
+			<StackPanel Grid.Row="0" Grid.Column="0" Spacing="10" Margin="10, 10, 0, 0">
+				<Grid RowDefinitions="*" ColumnDefinitions="*">
+					<Border CornerRadius="5" Background="White" Opacity="0.75" Grid.Column="0" Grid.Row="0"/>
+					<UserControl Content="{Binding question1}" Padding="10"/>
+				</Grid>
+				<Grid RowDefinitions="*" ColumnDefinitions="*">
+					<Border CornerRadius="5" Background="White" Opacity="0.75" Grid.Column="0" Grid.Row="0"/>
+					<UserControl Content="{Binding question2}" Padding="10"/>
+				</Grid>
+				<Grid RowDefinitions="*" ColumnDefinitions="*">
+					<Border CornerRadius="5" Background="White" Opacity="0.75" Grid.Column="0" Grid.Row="0"/>
+					<UserControl Content="{Binding question3}" Padding="10"/>
+				</Grid>
+				<Grid RowDefinitions="*" ColumnDefinitions="*">
+					<Border CornerRadius="5" Background="White" Opacity="0.75" Grid.Column="0" Grid.Row="0"/>
+					<UserControl Content="{Binding question4}" Padding="10"/>
+				</Grid>
+				<Grid RowDefinitions="*" ColumnDefinitions="*">
+					<Border CornerRadius="5" Background="White" Opacity="0.75" Grid.Column="0" Grid.Row="0"/>
+					<UserControl Content="{Binding question5}" Padding="10"/>
+				</Grid>
 			</StackPanel>
 			<Grid Grid.Column="1" RowDefinitions="*, *, *" Name="rightSide">
 				<Grid Grid.Row="0" RowDefinitions="*, *" MinHeight="200">
