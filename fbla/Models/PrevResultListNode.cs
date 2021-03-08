@@ -12,18 +12,31 @@ namespace fbla.Models
             string[] breakApart = fullPath.Split('\\');
             DocName = breakApart[breakApart.Length - 1];
             DocName = DocName.Remove(DocName.IndexOf('.'));
-            char[] nameCharArr = DocName.ToCharArray();
-            nameCharArr[DocName.Length - 3] = ':';
-            nameCharArr[DocName.Length - 6] = ':';
-            for (int i = 0; i < 9; i++)
+            string[] splitUpFileName = DocName.Split(null);
+            string FinalString = "";
+            for (int i = 0; i < splitUpFileName.Length; i++)
             {
-                if (nameCharArr[i] == ' ')
+                if (splitUpFileName[i] != "")
                 {
-                    nameCharArr[i] = '/';
+                    if (i < 2)
+                    {
+                        FinalString += splitUpFileName[i] + "/";
+                    }
+                    else if (i == 2)
+                    {
+                        FinalString += splitUpFileName[i] + " ";
+                    }
+                    else if (i != splitUpFileName.Length - 1)
+                    {
+                        FinalString += splitUpFileName[i] + ":";
+                    }
+                    else
+                    {
+                        FinalString += splitUpFileName[i];
+                    }
                 }
             }
-            DocName = String.Concat(nameCharArr);
-            DateTime d = DateTime.Parse(DocName);
+            DateTime d = DateTime.Parse(FinalString);
             DocName = d.ToString();
 
         }

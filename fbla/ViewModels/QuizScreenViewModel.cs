@@ -72,11 +72,17 @@ namespace fbla.ViewModels
                 }
                 i++;
             }
+
             question1 = dyns[0];
+            questionList.Add(dyns[0]);
             question2 = dyns[1];
+            questionList.Add(dyns[1]);
             question3 = dyns[2];
+            questionList.Add(dyns[2]);
             question4 = dyns[3];
+            questionList.Add(dyns[3]);
             question5 = dyns[4];
+            questionList.Add(dyns[4]);
             this.ShowPrevResults();
         }
         //warning for not answering a question, also used as a pop up to alert of a successful report export
