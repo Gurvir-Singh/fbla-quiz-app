@@ -18,6 +18,7 @@ namespace fbla.ViewModels
             animThread = new Thread(() => PlayAnimation(true));
             animThread.Start();
 
+
         }
         public void PlayAnimation(bool delayed = false)
         {
@@ -28,7 +29,7 @@ namespace fbla.ViewModels
             disabledForAnimation = false;
             Thread.Sleep(750);
             disabledForAnimation = true;
-
+            //startButtonEnabled = false;
         }
         public void ReverseAnimtion()
         {
@@ -122,7 +123,6 @@ namespace fbla.ViewModels
         }
         public void PastResults()
         {
-
             animThread = new Thread(() => ReverseAnimtion());
             Thread switchThread = new Thread(() => SwitchToPastResults());
             animThread.Start();
@@ -174,5 +174,6 @@ namespace fbla.ViewModels
             animThread = new Thread(() => PlayAnimation());
             animThread.Start();
         }
+        
     }
 }

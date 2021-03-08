@@ -9,13 +9,14 @@
         Icon="/Assets/fblalogoTransparent.png"
         Title="FBLA Quiz App"
 		xmlns:views="clr-namespace:fbla.Views"
-		Width="{Binding CurrentScreen.Width}">
+		Width="1100"
+		Height="600">
 	<Window.Background>
 		<ImageBrush Source="/Assets/Background.png" Stretch="Fill"/>
 	</Window.Background>
 	
 	<Window.Styles>
-		<Style Selector="UserControl:disabled">
+		<Style Selector="UserControl[IsEnabled=false]">
 			<Style.Animations>
 				<Animation Duration="0:0:0.75"  PlaybackDirection="{Binding playBackDirection}" >
 					<KeyFrame Cue="0%">
@@ -37,7 +38,7 @@
 		</Style>
 	</Window.Styles>
 	<Grid  RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
-		<UserControl IsVisible="{Binding visible}" IsEnabled="{Binding disabledForAnimation}" Name="Screen" Content="{Binding CurrentScreen}" Grid.RowSpan="30"></UserControl>
+		<UserControl  IsVisible="{Binding visible}" IsEnabled="{Binding disabledForAnimation}" Name="Screen" Content="{Binding CurrentScreen}" Grid.RowSpan="30"></UserControl>
 	</Grid>
 	
 

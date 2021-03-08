@@ -50,7 +50,25 @@
 			<Setter	Property="Width" Value="105"/>
 			<Setter Property="Height" Value="35"/>
 		</Style>
-		
+		<Style Selector="Border.BigButtons[IsHitTestVisible=false]">
+			<Style.Animations>
+				<Animation Duration="0:0:0.1" FillMode="Forward">
+					<KeyFrame Cue="0%">
+						<Setter Property="Width" Value="160"/>
+						<Setter Property="Height" Value="85"/>
+					</KeyFrame>
+					<KeyFrame Cue="50%">
+						<Setter Property="Width" Value="150"/>
+						<Setter Property="Height" Value="75"/>
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Width" Value="160"/>
+						<Setter Property="Height" Value="85"/>
+						<Setter Property="IsHitTestVisible" Value="True"/>
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
 		<Style Selector="UserControl">
 			<Setter Property="FontSize" Value="16"/>
 			<Setter Property="FontFamily" Value="Palatino Linotype"/>
@@ -103,38 +121,39 @@
 				<UserControl Content="{Binding question5}" Padding="10"/>
 			</StackPanel>
 			<Grid Grid.Column="1" RowDefinitions="*, *, *" Name="rightSide">
-				<Grid Grid.Row="0" RowDefinitions="*, *">
+				<Grid Grid.Row="0" RowDefinitions="*, *" MinHeight="200">
 					<!--Submit Button -->
-					<Border BorderThickness="4" CornerRadius="5" Grid.Row="0" Padding="4"
+					<Border BorderThickness="4" CornerRadius="5" Grid.Row="0" Padding="4" Classes="BigButtons"
 							Width="160" Height="85" BorderBrush="#97c3e7" Background="#97c3e7" IsVisible="{Binding SubmitButtonShowing}">
 						<Grid>
 							<TextBlock FontFamily="Palatino Linotype" FontSize="24" VerticalAlignment="Center"
-								HorizontalAlignment="Center" FontWeight="Bold"
+								HorizontalAlignment="Center" FontWeight="Bold" 
 								>Submit</TextBlock>
 							<Button HorizontalAlignment="Center" BorderThickness="0"
 									Command="{Binding ScoreQuiz}" Width="150" Height="75"
-									VerticalAlignment="Center"
+									VerticalAlignment="Center" Click="OnButtonClick"
 									FontSize="24" FontFamily="Palatino Linotype" FontWeight="Bold"
 									>Submit</Button>
 						</Grid>
 					</Border>
-					<Border BorderThickness="4" CornerRadius="5" Grid.Row="0" Padding="4"
+					<!--Generate Printable Report Button-->
+					<Border BorderThickness="4" CornerRadius="5" Grid.Row="0" Padding="4" Classes="BigButtons"
 							Width="160" Height="85" BorderBrush="#97c3e7" Background="#97c3e7" IsVisible="{Binding !SubmitButtonShowing}">
 						<Grid>
 							<TextBlock FontFamily="Palatino Linotype" FontSize="16" VerticalAlignment="Center"
-								HorizontalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"
-								>Generate Printable Result</TextBlock>
+								HorizontalAlignment="Center" FontWeight="Bold" Text="Generate Printable&#x0a;            Report" TextAlignment="Left"
+								/>
 							<Button HorizontalAlignment="Center" BorderThickness="0"
 									Command="{Binding generatePrintableResult}" Width="150" Height="75"
-									VerticalAlignment="Center" FontSize="16" 
-									FontFamily="Palatino Linotype" FontWeight="Bold"
-									Content="Generate Printable&#x0a;            Result"
+									VerticalAlignment="Center" FontSize="16" Click="OnButtonClick"
+									FontFamily="Palatino Linotype" FontWeight="Bold" 
+									Content="Generate Printable&#x0a;            Report"
 									>
 							</Button>
 						</Grid>
 					</Border>
 					<!--Return Home Button-->
-					<Border BorderThickness="4" CornerRadius="5" Grid.Row="1" Padding="4"
+					<Border BorderThickness="4" CornerRadius="5" Grid.Row="1" Padding="4" Classes="BigButtons"
 							Width="160" Height="85" BorderBrush="#97c3e7" Background="#97c3e7">
 						<Grid>
 							<TextBlock FontFamily="Palatino Linotype" FontSize="21" VerticalAlignment="Center"
@@ -142,7 +161,7 @@
 								>Return Home</TextBlock>
 							<Button HorizontalAlignment="Center" BorderThickness="0"
 									FontFamily="Palatino Linotype" FontSize="21" FontWeight="Bold"
-									Height="75" Width="150"
+									Height="75" Width="150" Click="OnButtonClick"
 									VerticalAlignment="Center"
 									Command="{Binding $parent[Window].DataContext.ReturnToHome}"
 									IsVisible="True">Return Home</Button>
@@ -160,18 +179,20 @@
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result4}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding result5}"></TextBlock>
 					<TextBlock FontWeight="Bold" FontSize="24" Text="{Binding totalResult}"></TextBlock>
-					<Border BorderThickness="2" CornerRadius="5" Padding="4" IsVisible="{Binding !viewingOldResult}"
+					<Border BorderThickness="2" CornerRadius="5" Padding="4" Margin="0, 10, 0, 10" IsVisible="{Binding !viewingOldResult}"
 							Width="160" Height="75" BorderBrush="#97c3e7" Background="#97c3e7">
 						<Grid>
 							<TextBlock Text="Save Results"/>
-							<Button Command="{Binding saveResults}" IsEnabled="{Binding saveResultsEnabled}" IsVisible="{Binding !viewingOldResult}">Save Results</Button>
+							<Button Command="{Binding saveResults}" IsEnabled="{Binding saveResultsEnabled}" 
+									IsVisible="{Binding !viewingOldResult}" Click="OnButtonClick">Save Results</Button>
 						</Grid>
 					</Border>
-					<Border BorderThickness="2" CornerRadius="5"  Padding="4" IsVisible="{Binding viewingOldResult}"
+					<Border BorderThickness="2" CornerRadius="5"  Padding="4" Margin="0, 10, 0, 10" IsVisible="{Binding viewingOldResult}"
 							Width="160" Height="75" BorderBrush="#97c3e7" Background="#97c3e7">
 						<Grid>
 							<TextBlock Text="Go Back"/>
-							<Button Command="{Binding $parent[Window].DataContext.PastResults}" IsVisible="{Binding viewingOldResult}">Go Back</Button>
+							<Button Command="{Binding $parent[Window].DataContext.PastResults}" 
+									IsVisible="{Binding viewingOldResult}" Click="OnButtonClick">Go Back</Button>
 						</Grid>
 					</Border>
 				</StackPanel>

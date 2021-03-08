@@ -25,15 +25,15 @@ namespace fbla.ViewModels
         {
             Items = new ObservableCollection<PrevResultListNodeViewModel>();
 
-            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults"))
+            if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FBLA"))
             {
-                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults");
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FBLA");
             }
-            if (Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults").Length > 6)
+            if (Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FBLA").Length > 6)
             {
                 scrollBarVisible = Avalonia.Controls.Primitives.ScrollBarVisibility.Visible;
             }
-            foreach (string f in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\fblaresults"))
+            foreach (string f in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FBLA"))
             {
                 Items.Add(new PrevResultListNodeViewModel(f));
             }

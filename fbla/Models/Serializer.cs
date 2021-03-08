@@ -52,10 +52,13 @@ namespace fbla.Models
                 }
             }
             var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
+            if (!Directory.Exists(documentsPath + "\\FBLA"))
+            {
+                Directory.CreateDirectory(documentsPath + "\\FBLA\\");
+            }
             String pathPrefixString = String.Concat(pathPrefix);
             //pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
-            String path = documentsPath + "\\fblaResults\\";
+            String path = documentsPath + "\\FBLA\\";
             List<dynamic> qModels = new List<dynamic>();
             foreach(dynamic q in questionsList)
             {
@@ -79,10 +82,13 @@ namespace fbla.Models
                 }
             }
             var documentsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            Directory.CreateDirectory(documentsPath + "\\fblaResults\\");
+            if (!Directory.Exists(documentsPath + "\\FBLA Quiz Results\\"))
+            {
+                Directory.CreateDirectory(documentsPath + "\\FBLA Quiz Results\\");
+            }
             String pathPrefixString = (String.Concat(pathPrefix)).Trim();
             pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
-            String path = documentsPath + "\\fblaResults\\";
+            String path = documentsPath + "\\FBLA Quiz Results\\";
             Document document = new Document();
             Page page = new Page(PageSize.Letter, PageOrientation.Portrait, 54.0f);
             document.Pages.Add(page);

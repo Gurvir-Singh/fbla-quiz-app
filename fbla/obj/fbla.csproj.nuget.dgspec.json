@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chari\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj": {}
+    "C:\\Users\\Gurv\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chari\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj": {
+    "C:\\Users\\Gurv\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chari\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj",
+        "projectUniqueName": "C:\\Users\\Gurv\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj",
         "projectName": "fbla",
-        "projectPath": "C:\\Users\\chari\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj",
-        "packagesPath": "C:\\Users\\chari\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chari\\source\\repos\\fbla-quiz-app\\fbla\\obj\\",
+        "projectPath": "C:\\Users\\Gurv\\source\\repos\\fbla-quiz-app\\fbla\\fbla.csproj",
+        "packagesPath": "C:\\Users\\Gurv\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gurv\\source\\repos\\fbla-quiz-app\\fbla\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\chari\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gurv\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -30,7 +30,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,7 +41,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Avalonia": {
               "target": "Package",
@@ -84,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

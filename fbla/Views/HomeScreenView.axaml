@@ -53,9 +53,22 @@
 			<Setter	Property="Width" Value="287"/>
 			<Setter Property="Height" Value="110"/>
 		</Style>
-		
+		<Style Selector="Border[IsHitTestVisible=false]">
+			<Style.Animations>
+				<Animation Duration="0:0:0.1">
+					<KeyFrame Cue="0%">
+						<Setter Property="Width" Value="277"/>
+						<Setter Property="Height" Value="100"/>
+					</KeyFrame>
+					<KeyFrame Cue="100%">
+						<Setter Property="Width" Value="267"/>
+						<Setter Property="Height" Value="90"/>
+					</KeyFrame>
+				</Animation>
+			</Style.Animations>
+		</Style>
 		<Style Selector="Button:pressed">
-			<Setter Property="Opacity" Value="0"/>
+			<Setter	Property="Opacity" Value="0"/>
 		</Style>
 		<Style Selector="Button#quitButton">
 			<Setter Property="Background" Value="#ff4d4d"/>
@@ -86,7 +99,7 @@
 							   HorizontalAlignment="Center" FontWeight="Bold"
 							   >Start Quiz</TextBlock>
 					<Button IsEnabled="True" BorderThickness="0"
-							Width="277" Height="100"
+							Width="277" Height="100" Click="OnButtonClick"
 							Command="{Binding $parent[Window].DataContext.startQuiz}"
 							HorizontalAlignment="Center"
 							VerticalAlignment="Center">
@@ -100,7 +113,7 @@
 								   HorizontalAlignment="Center" FontWeight="Bold"
 							   >Past Results</TextBlock>
 					<Button IsEnabled="True" BorderThickness="0"
-							Width="277" Height="100"
+							Width="277" Height="100" Click="OnButtonClick"
 							Command="{Binding $parent[Window].DataContext.PastResults}"
 							HorizontalAlignment="Center"
 							VerticalAlignment="Center">
