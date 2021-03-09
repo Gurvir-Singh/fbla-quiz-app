@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -13,8 +13,9 @@
     <PackageReference Include="Avalonia" Version="0.9.11" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
-    <PackageReference Include="ceTe.DynamicPDF.CoreSuite.NET" Version="11.6.0" />
-    <PackageReference Include="FastReport.OpenSource" Version="2021.1.2" />
+    <PackageReference Include="ceTe.DynamicPDF.CoreSuite.NET" Version="11.7.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2021.1.20" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
   </ItemGroup>
 </Project>

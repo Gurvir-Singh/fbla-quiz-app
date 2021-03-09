@@ -68,7 +68,11 @@ namespace fbla.Models
                 sr.Write(JsonConvert.SerializeObject(qModels));
             }
         }
+        
 
+
+        //old way to make pdfs, used ceTe DynamicPDF
+        
         public void pdfFormatter(List<dynamic> questionsList)
         {
             DateTime currentTime = DateTime.Now;
@@ -95,11 +99,9 @@ namespace fbla.Models
             //document.Pages.Add(ScorePage);
             document.Pages.Add(QustionsPage);
 
-            //Page b = new Page()
-            //string docPath = (Directory.GetParent((Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))).FullName)).FullName;
-            //docPath += @"\source\repos\fbla-quiz-app\fbla\Assets\fblalogo.png";
 
-            //ScorePage.Elements.Add(new Image(docPath, 0, 0));
+            
+
 
             int i = 0;
             float questionHeight = (QustionsPage.Dimensions.Height - 100) / 50;
@@ -174,8 +176,5 @@ namespace fbla.Models
             }
             document.Draw(path + pathPrefixString + ".pdf");
         }
-
-        
-        
     }
 }
