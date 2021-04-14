@@ -391,7 +391,11 @@ namespace fbla.ViewModels
                 {
                     return _score;
                 }
-                checkSelections();
+                if (!(choicesSelected.Count > 0))
+                {
+                    checkSelections();
+                }
+                
                 if (choicesSelected.Count == 1)
                 {
                     if (questionModel.correctAnswer1 == choicesSelected[0] || questionModel.correctAnswer2 == choicesSelected[0])

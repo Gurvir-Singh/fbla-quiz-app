@@ -15,13 +15,14 @@ namespace fbla.Models
         public Serializer()
         {
             string docPath = (Directory.GetParent((Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData))).FullName)).FullName;
-            //Gets the 50 questions from json file
             questions = JsonConvert.DeserializeObject<List<List<String>>>(File.ReadAllText(docPath + @"\source\repos\fbla-quiz-app\fbla\Assets\Questions.json"));
         }
-        //gets 5 random questions from the 50 and returns it
+
+
+        //gets 5 random questions from the 50 and returns a list of them
         public List<List<String>> getQuestions()
         {
-            
+
             List<List<String>> results = new List<List<string>>();
             do
             {
@@ -30,14 +31,13 @@ namespace fbla.Models
                 for (int i = 0; i < 5; i++)
                 {
                     results.Add(questions[rand.Next(49)]);
+                    
                 }
             } while (results.Count != results.Distinct().Count()); 
-
-
-
             return results;
         }
 
+        //formats the quiz result into json in to be reviewed later
         public void jsonFormatter(List<dynamic> questionsList)
         {
             JsonSerializer js = new JsonSerializer();
@@ -57,7 +57,6 @@ namespace fbla.Models
                 Directory.CreateDirectory(documentsPath + "\\FBLA\\");
             }
             String pathPrefixString = String.Concat(pathPrefix);
-            //pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
             String path = documentsPath + "\\FBLA\\";
             List<dynamic> qModels = new List<dynamic>();
             foreach(dynamic q in questionsList)
@@ -71,7 +70,7 @@ namespace fbla.Models
         
 
 
-        //old way to make pdfs, used ceTe DynamicPDF
+        //Generates the pdfs 
         
         public void pdfFormatter(List<dynamic> questionsList)
         {
@@ -94,13 +93,8 @@ namespace fbla.Models
             pathPrefixString = pathPrefixString.Substring(0, pathPrefixString.Length - 2);
             String path = documentsPath + "\\FBLA Quiz Results\\";
             Document document = new Document();
-            //Page ScorePage = new Page(PageSize.Letter, PageOrientation.Portrait, 54.0f);
             Page QustionsPage = new Page(PageSize.Letter, PageOrientation.Portrait, 54.0f);
-            //document.Pages.Add(ScorePage);
             document.Pages.Add(QustionsPage);
-
-
-            
 
 
             int i = 0;

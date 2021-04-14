@@ -17,6 +17,7 @@ namespace fbla.ViewModels
             viewingOldResult = false;
             Serializer sz = serZ;
             List<List<String>> questionsResult = sz.getQuestions();
+            
             int i = 1;
 
             foreach (List<String> question in questionsResult)
@@ -423,7 +424,6 @@ namespace fbla.ViewModels
         }
         public void generatePrintableResult()
         {
-            saveResultsEnabled = false;
             Serializer sz = new Serializer();
             sz.pdfFormatter(questionList);
             okVisible = true;

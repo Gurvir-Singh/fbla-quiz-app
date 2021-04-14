@@ -109,6 +109,11 @@
 		<Style Selector="Button#OkButtonWarning:pointerover">
 			<Setter Property="Background" Value="#d9d9d9"/>
 		</Style>
+		<Style>
+			<Style.Animations>
+				
+			</Style.Animations>
+		</Style>
 	</UserControl.Styles>
 	<ScrollViewer>
 		<Grid Classes="Warning" RowDefinitions="Auto" ColumnDefinitions="3*,2*">
